@@ -1,4 +1,5 @@
 import spotipy
+
 import logs
 
 auth_manager = spotipy.oauth2.SpotifyClientCredentials()
