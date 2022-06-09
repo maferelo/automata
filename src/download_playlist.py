@@ -19,12 +19,10 @@ def get_playlists_urls(spotipy_session: Spotify, spotify_username: str) -> List[
 
 
 def download_playlists(download_directory: str, playlists_urls: List[str]) -> None:
-    subprocess.run(f"cd {download_directory}", shell=True)
     for playlist in playlists_urls:
         logger.info(f"Downloading {playlist}")
-        output = subprocess.check_output(f"spotdl {playlist}", shell=True)
+        output = subprocess.check_output(f"spotdl {playlist} --m3u", shell=True)
         logger.info(f"Output {output}")
-        break
 
 
 def main() -> None:
