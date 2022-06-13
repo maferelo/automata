@@ -4,13 +4,6 @@
 
 ## Install
 
-Install [ffmpeg](https://ffmpeg.org/) to enable audio streaming for spotify-downloader package.
-
-```bash
-brew install ffmpeg
-sudo apt get install ffmpeg
-```
-
 Use the package manager [poetry](https://python-poetry.org/) to install requirements.
 
 ```bash

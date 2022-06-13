@@ -12,10 +12,12 @@
 		},
 		"python.analysis.typeCheckingMode": "strict",
 		"python.linting.pylintEnabled": true,
-		"python.linting.enabled":true,
+		"python.linting.enabled": true,
 		"python.formatting.provider": "black",
 		"workbench.colorCustomizations": {
-			"titleBar.activeBackground": "#a75600",
-		}
+			"titleBar.activeBackground": "#FFFDD0",
+			"titleBar.activeForeground": "#000000",
+		},
+		"makefile.extensionOutputFolder": "./.vscode"
 	}
 }
