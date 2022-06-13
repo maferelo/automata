@@ -4,5 +4,18 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"editor.formatOnSaveMode": "file",
+		"editor.formatOnSave": true,
+		"editor.codeActionsOnSave": {
+			"source.organizeImports": true
+		},
+		"python.analysis.typeCheckingMode": "strict",
+		"python.linting.pylintEnabled": true,
+		"python.linting.enabled":true,
+		"python.formatting.provider": "black",
+		"workbench.colorCustomizations": {
+			"titleBar.activeBackground": "#a75600",
+		}
+	}
 }
