@@ -1,8 +1,24 @@
 # Apps
 
-> Several personal scripts for automation of everyday of tasks.
+> Several personal scripts for automation of everyday of tasks
+> using best practices with reference notes.
 
 ## Install
+
+```bash
+sudo apt update
+sudo apt upgrade
+sudo reboot
+sudo apt autoremove
+sudo apt clean
+```
+
+Use lalala [Docker](https://www.docker.com/) to install requirements.
+
+```bash
+curl -fsSL https://get.docker.com -o get-docker.s
+sudo sh get-docker.sh
+```
 
 Use the package manager [poetry](https://python-poetry.org/) to install requirements.
 

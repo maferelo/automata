@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "apps"
 version = "0.1.0"
-description = ""
+description = "Utilities using best practices with notes and examples"
 authors = ["Felipe Restrepo <maferelo@users.noreply.github.com>"]
 
 [tool.poetry.dependencies]
