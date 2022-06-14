@@ -10,7 +10,7 @@
 		"editor.codeActionsOnSave": {
 			"source.organizeImports": true
 		},
-		"python.analysis.typeCheckingMode": "strict",
+		"python.analysis.typeCheckingMode": "basic",
 		"python.linting.pylintEnabled": true,
 		"python.linting.enabled": true,
 		"python.formatting.provider": "black",
