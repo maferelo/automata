@@ -17,7 +17,6 @@
 		"workbench.colorCustomizations": {
 			"titleBar.activeBackground": "#FFFDD0",
 			"titleBar.activeForeground": "#000000",
-		},
-		"makefile.extensionOutputFolder": "./.vscode"
+		}
 	}
 }
