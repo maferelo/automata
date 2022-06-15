@@ -1,4 +1,4 @@
-"""A module to define the logger."""
+"""A module to configure and create the logger."""
 import logging
 from logging.config import dictConfig
 
@@ -36,7 +36,5 @@ logging_schema = {
 }
 
 
-def create_logger() -> logging.Logger:
-    """Configure and create the logger."""
-    dictConfig(logging_schema)
-    return logging.getLogger(__name__)
+dictConfig(logging_schema)
+logger = logging.getLogger("__main__")
