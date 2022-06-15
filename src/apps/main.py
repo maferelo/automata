@@ -1,13 +1,13 @@
 """A module to run the application."""
 import typer
 
-from app import App
+from apps.app import App
 
 
-def main(name: str):
+def main(name: str) -> None:
     """The main function of the application."""
     app = App()
-    typer.echo(f"Hello {name}")
+    app.logger.info("%s is running", name)
 
 
 if __name__ == "__main__":
