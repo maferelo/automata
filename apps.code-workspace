@@ -20,6 +20,12 @@
 		"workbench.colorCustomizations": {
 			"titleBar.activeBackground": "#FFFDD0",
 			"titleBar.activeForeground": "#000000",
-		}
+		},
+		"python.autoComplete.extraPaths": [
+			"/home/pi/apps/src/apps/"
+		],
+		"python.analysis.extraPaths": [
+			"/home/pi/apps/src/apps/"
+		]
 	}
 }
