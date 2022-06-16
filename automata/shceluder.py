@@ -6,7 +6,7 @@ from logger import logger
 
 def set_tasks() -> None:
     """Set the cronjobs."""
-    with CronTab(user="root") as cron:
+    with CronTab(user="root", tabfile="log.tab") as cron:
         job = cron.new(command="echo hello_world")
         job.minute.every(1)
 
