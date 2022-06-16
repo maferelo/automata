@@ -48,8 +48,8 @@ def log_execution(func: Callable) -> Callable:
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         logger.info("Started %s", func.__name__)
-        func(*args, **kwargs)
+        result = func(*args, **kwargs)
         logger.info("Finished %s", func.__name__)
-        return func(*args, **kwargs)
+        return result
 
     return wrapper
