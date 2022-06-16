@@ -1,6 +1,8 @@
 """A module to configure and create the logger."""
+import functools
 import logging
 from logging.config import dictConfig
+from typing import Callable
 
 logging_schema = {
     "version": 1,
@@ -20,7 +22,7 @@ logging_schema = {
             "class": "logging.handlers.RotatingFileHandler",
             "formatter": "standard",
             "level": "INFO",
-            "filename": "logs/.log",
+            "filename": "logs/automata.log",
             "maxBytes": 500000,
             "backupCount": 4,
         },
@@ -38,3 +40,16 @@ logging_schema = {
 
 dictConfig(logging_schema)
 logger = logging.getLogger("__main__")
+
+
+def log_execution(func: Callable) -> Callable:
+    """A decorator to log the function's execution."""
+
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        logger.info("Started %s", func.__name__)
+        func(*args, **kwargs)
+        logger.info("Finished %s", func.__name__)
+        return func(*args, **kwargs)
+
+    return wrapper

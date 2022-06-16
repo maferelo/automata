@@ -1,13 +1,16 @@
 """A module to run the application."""
 import typer
 
-from shceluder import set_tasks
+from shceluder import reset_jobs
+
+commands = (reset_jobs,)
 
 
-def main(name: str) -> None:
+def main(command_name: str) -> None:
     """The main function of the application."""
-    if name == "scheluder":
-        set_tasks()
+    for command in commands:
+        if command_name == command.__name__:
+            command()
 
 
 if __name__ == "__main__":
