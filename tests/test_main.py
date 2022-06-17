@@ -6,7 +6,7 @@ from automata.main import app  # isort:skip
 runner = testing.CliRunner()
 
 
-def test_app():
+def test_app() -> None:
     """Test CLI."""
     result = runner.invoke(app, ["--help"])
     assert result.exit_code == 0
