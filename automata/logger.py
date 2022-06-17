@@ -22,7 +22,7 @@ logging_schema = {
             "class": "logging.handlers.RotatingFileHandler",
             "formatter": "standard",
             "level": "INFO",
-            "filename": "logs/automata.log",
+            "filename": f"logs/{__name__}.log",
             "maxBytes": 500000,
             "backupCount": 4,
         },
@@ -42,14 +42,14 @@ dictConfig(logging_schema)
 logger = logging.getLogger("__main__")
 
 
-def log_execution(func: Callable) -> Callable:
+def log_execution(function: Callable) -> Callable:
     """A decorator to log the function's execution."""
 
-    @functools.wraps(func)
+    @functools.wraps(function)
     def wrapper(*args, **kwargs):
-        logger.info("Started %s", func.__name__)
-        result = func(*args, **kwargs)
-        logger.info("Finished %s", func.__name__)
+        logger.info("Started %s", function.__name__)
+        result = function(*args, **kwargs)
+        logger.info("Finished %s", function.__name__)
         return result
 
     return wrapper

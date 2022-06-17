@@ -3,12 +3,10 @@ import os
 
 from crontab import CronTab
 
-from logger import log_execution
+from automata.logger import log_execution
 
 JOBS = ("update", "cleanup")
-LOG_FILE_PATH = os.path.join(
-    os.path.dirname(os.path.dirname(__file__)), "logs", "cron.log"
-)
+LOGS_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "logs")
 SCRIPTS_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "scripts")
 
 
@@ -19,7 +17,8 @@ def create_command(name: str) -> str:
     command = "; ".join(
         [f"echo Start {name}: $(date)", command, f"echo End {name}: $(date)"]
     )
-    command = f"({command}) >> {LOG_FILE_PATH} 2>&1"
+    log_file_path = os.path.join(LOGS_PATH, f"{name}.log")
+    command = f"({command}) >> {log_file_path} 2>&1"
     return command
 
 
