@@ -30,7 +30,7 @@ def set_job(name: str, day: int, cron: CronTab) -> None:
 
 @log_execution
 def reset_jobs() -> None:
-    """Set the cronjobs."""
+    """Set the cronjobs to run consecutive by day of month."""
     with CronTab(user="root") as cron:
         cron.remove_all()
         for day, task in enumerate(JOBS, start=1):
