@@ -1,66 +1,49 @@
-# Apps
+# Automata
 
 > Several personal scripts for automation of everyday of tasks
 > using best practices with reference notes.
 
 ## Install
 
+Install requirements: [ex-fuse](https://packages.debian.org/source/buster/fuse-exfat), [Python3.9.13](https://www.python.org/), [Docker](https://www.docker.com/).
+
 ```bash
-sudo apt update
-sudo apt upgrade
-sudo reboot
-sudo apt autoremove
-sudo apt clean
+sudo sh install-requirements.sh
 ```
 
-Use lalala [Docker](https://www.docker.com/) to install requirements.
+Clone repository
 
 ```bash
-curl -fsSL https://get.docker.com -o get-docker.s
-sudo sh get-docker.sh
+git clone https://github.com/maferelo/automata.git
+cd automata/
 ```
 
 Use the package manager [poetry](https://python-poetry.org/) to install requirements.
 
 ```bash
+curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+
 poetry install
 ```
 
 ### Initial Configuration
 
-Spotipy.
+Use .env file to setup the Automata configuration
 
-```bash
-export SPOTIPY_CLIENT_ID='your-spotify-client-id'
-export SPOTIPY_CLIENT_SECRET='your-spotify-client-secret'
-```
+TZ
 
-Use .env file to setup the apps configuration
-
-DOWNLOADS_DIRECTORY
-
-Path to donwloads e.g. '/Volumes/SDCard/Downloads'
-
-SPOTIFY_USERNAME
-
-User to extract data from e.g. '12125368756'
+Timezone for the project (optional) e.g. 'America/Bogota'
 
 ## Usage
 
 ```bash
 poetry shell
-cd apps/
-```
-
-Download spotify playlist with yt-download
-
-```bash
-python spotify_dl.py
+python automata/main.py --help
 ```
 
 ## Features
 
-- spotify_dl: Download spotify playlist with yt-download
+- reset_jobs: Set the cronjobs to run consecutive by day of month.
 
 ## Contributing
 
@@ -69,8 +52,8 @@ branch. Pull requests are warmly welcome.
 
 ## Links
 
-- Project homepage: https://your.github.com/apps/
-- Repository: https://github.com/maferelo/apps/
+- Project homepage: https://your.github.com/automata/
+- Repository: https://github.com/maferelo/automata/
 - Issue tracker: https://github.com/your/maferelo/issues
   - In case of sensitive bugs like security vulnerabilities, please contact
     maferelo13@gmail.com directly instead of using issue tracker. We value your effort
