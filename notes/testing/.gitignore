@@ -1,6 +1,0 @@
-**/*.pyc
-.coverage
-htmlcov
-**/.DS_Store
-**/node_modules
-**/*.log

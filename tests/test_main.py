@@ -1,7 +1,7 @@
 """Tests for main module."""
 from typer import testing
 
-from automata.main import app  # isort:skip
+from main import app  # isort:skip
 
 runner = testing.CliRunner()
 

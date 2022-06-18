@@ -1,26 +1,27 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	],
-	"settings": {
-		"editor.formatOnSaveMode": "file",
-		"editor.formatOnSave": true,
-		"editor.codeActionsOnSave": {
-			"source.organizeImports": true
-		},
-		"python.analysis.diagnosticSeverityOverrides": {
-			"reportGeneralTypeIssues": "none",
-		},
-		"python.analysis.typeCheckingMode": "basic",
-		"python.linting.pylintEnabled": true,
-		"python.linting.enabled": true,
-		"python.formatting.provider": "black",
-		"workbench.colorCustomizations": {
-			"titleBar.activeBackground": "#FFFDD0",
-			"titleBar.activeForeground": "#000000",
-		},
-		"makefile.extensionOutputFolder": "./.vscode"
-	}
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.formatOnSaveMode": "file",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
+    "python.envFile": "${workspaceFolder}/.env",
+    "python.analysis.diagnosticSeverityOverrides": {
+      "reportGeneralTypeIssues": "none"
+    },
+    "python.analysis.typeCheckingMode": "basic",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.formatting.provider": "black",
+    "workbench.colorCustomizations": {
+      "titleBar.activeBackground": "#FFFDD0",
+      "titleBar.activeForeground": "#000000"
+    },
+    "makefile.extensionOutputFolder": "./.vscode"
+  }
 }
