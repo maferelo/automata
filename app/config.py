@@ -15,9 +15,9 @@ load_dotenv()
 class Paths:
     """A dataclass to define global variables."""
 
-    project_dir: Path = Path(app.__file__).parent.parent
-    log_file_path: Path = project_dir / "logs" / "app.log"
-    scripts_path: Path = project_dir / "scripts"
+    project_path: Path = Path(app.__file__).parent.parent
+    log_file_path: Path = project_path / "logs" / "app.log"
+    scripts_path: Path = project_path / "scripts"
     scheluder_scripts: Tuple[str] = tuple(os.environ["SCHELUDER_SCRIPTS"].split(","))
 
 
