@@ -2,7 +2,7 @@
 import logging
 from logging.config import dictConfig
 
-from app.config import paths
+from automata.config import paths
 
 logging_schema = {
     "version": 1,
@@ -22,8 +22,8 @@ logging_schema = {
             "class": "logging.handlers.RotatingFileHandler",
             "formatter": "standard",
             "level": "INFO",
-            "filename": paths.log_file_path,
-            "maxBytes": 500_000,  # 0.5 MB
+            "filename": paths.log_file,
+            "maxBytes": 1_000_000,  # 1 MB
             "backupCount": 4,
         },
     },

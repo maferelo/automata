@@ -3,9 +3,9 @@ from pathlib import Path
 
 from crontab import CronTab
 
-from app.config import paths
-from app.logger import logger
-from app.utils import log_start_and_finish_decorator
+from automata.config import paths, scheluder_scripts
+from automata.logger import logger
+from automata.utils import log_start_and_finish_decorator
 
 
 def add_logging_and_timestamps_to_command(script_file_path: Path, name: str) -> str:
@@ -17,12 +17,12 @@ def add_logging_and_timestamps_to_command(script_file_path: Path, name: str) -> 
             f"echo End {name}: $(date)",
         )
     )
-    return f"({timestamp_command}) >> {paths.log_file_path} 2>&1"  # output to log file
+    return f"({timestamp_command}) >> {paths.log_file} 2>&1"  # output to log file
 
 
 def create_command(name: str) -> str:
     """Create a command to run and log the script in bash if exists."""
-    script_file_path = paths.scripts_path / f"{name}.sh"
+    script_file_path = paths.scripts / f"{name}.sh"
     if script_file_path.exists() is False:
         logger.error("Script file %s does not exist.", script_file_path)
         return ""
@@ -43,5 +43,5 @@ def reset_jobs() -> None:
     """Reset the cronjobs to run daily from start of month."""
     with CronTab(user="root") as crontab_session:
         crontab_session.remove_all()
-        for day, name in enumerate(paths.scheluder_scripts, start=1):
+        for day, name in enumerate(scheluder_scripts, start=1):
             set_job(day, name, crontab_session)

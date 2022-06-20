@@ -1,2 +1,2 @@
 """Start module for the application."""
-import app.config
+import automata.config

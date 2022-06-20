@@ -6,19 +6,19 @@ from typing import Tuple
 
 from dotenv import load_dotenv
 
-import app
+import automata
 
 load_dotenv()
 
 
-@dataclass
+@dataclass(frozen=True)
 class Paths:
     """A dataclass to define global variables."""
 
-    project_path: Path = Path(app.__file__).parent.parent
-    log_file_path: Path = project_path / "logs" / "app.log"
-    scripts_path: Path = project_path / "scripts"
-    scheluder_scripts: Tuple[str] = tuple(os.environ["SCHELUDER_SCRIPTS"].split(","))
+    project: Path = Path(automata.__file__).parent.parent
+    log_file: Path = project / "logs" / "app.log"
+    scripts: Path = project / "scripts"
 
 
+scheluder_scripts: tuple(os.environ["SCHELUDER_SCRIPTS"].split(","))
 paths = Paths()

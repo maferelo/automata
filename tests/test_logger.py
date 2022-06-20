@@ -1,5 +1,5 @@
 """Tests for logger module."""
-from app.logger import log_execution, logger
+from automata.logger import log_execution, logger
 
 
 def test_logger() -> None:
