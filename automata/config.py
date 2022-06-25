@@ -2,7 +2,6 @@
 import os
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Tuple
 
 from dotenv import load_dotenv
 
@@ -20,5 +19,14 @@ class Paths:
     scripts: Path = project / "scripts"
 
 
-scheluder_scripts: tuple(os.environ["SCHELUDER_SCRIPTS"].split(","))
+@dataclass(frozen=True)
+class TelegramConfig:
+    """A dataclass to define the behaviour of the telegram bot."""
+
+    token: str = os.environ["TELEGRAM_TOKEN"]
+    chat_id: str = os.environ["TELEGRAM_CHAT_ID"]
+
+
+scheluder_scripts = tuple(os.environ["SCHELUDER_SCRIPTS"].split(","))
 paths = Paths()
+telegram_config = TelegramConfig()
