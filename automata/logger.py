@@ -2,7 +2,12 @@
 import logging
 from logging.config import dictConfig
 
-from automata.config import paths
+import telegram
+
+from automata.config import paths, telegram_config
+
+telegram_bot = telegram.Bot(token=telegram_config.token)
+
 
 logging_schema = {
     "version": 1,
@@ -37,4 +42,11 @@ logging_schema = {
     "root": {"level": "INFO", "handlers": ["file"]},
 }
 dictConfig(logging_schema)
+
+
 logger = logging.getLogger("__main__")
+logger.addFilter(
+    lambda record: telegram_bot.send_message(
+        chat_id=telegram_config.chat_id, text=record.getMessage()
+    )
+)
