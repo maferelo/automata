@@ -1,7 +1,8 @@
 """A module to run the application."""
 import typer
 
-from app import scheluder
+from automata import scheluder
+from automata.logger import logger
 
 app = typer.Typer(help="Utilities to automate project execution and learn clean code.")
 
@@ -13,9 +14,9 @@ def reset_jobs() -> None:
 
 
 @app.command()
-def test() -> None:
-    """Test command."""
-    print("Test command.")
+def log_message(message: str) -> None:
+    """Log message to file and telegram."""
+    logger.info(message)
 
 
 if __name__ == "__main__":
