@@ -10,6 +10,7 @@
     "editor.codeActionsOnSave": {
       "source.organizeImports": true
     },
+    "editor.rulers": [88],
     "python.envFile": "${workspaceFolder}/.env",
     "python.analysis.diagnosticSeverityOverrides": {
       "reportGeneralTypeIssues": "none"
