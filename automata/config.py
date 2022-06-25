@@ -1,5 +1,6 @@
 """A module setup environment and app variables."""
 import os
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -16,6 +17,8 @@ class Paths:
 
     project: Path = Path(automata.__file__).parent.parent
     log_file: Path = project / "logs" / "app.log"
+    main: Path = project / "main.py"
+    python_executable: Path = Path(sys.executable)
     scripts: Path = project / "scripts"
 
 

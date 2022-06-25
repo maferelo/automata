@@ -12,9 +12,9 @@ def add_logging_and_timestamps_to_command(script_file_path: Path, name: str) -> 
     """Add start and finish timestamp logs to a bash script."""
     timestamp_command = ";".join(
         (
-            f"echo Start {name}: $(date)",
+            f"{paths.python_executable} {paths.main} log-message start-{name}",
             f"sh {script_file_path}",
-            f"echo End {name}: $(date)",
+            f"{paths.python_executable} {paths.main} log-message end-{name}",
         )
     )
     return f"({timestamp_command}) >> {paths.log_file} 2>&1"  # output to log file
@@ -34,7 +34,8 @@ def set_job(day: int, name: str, crontab_session: CronTab) -> None:
     command = create_command(name)
     if command == "":
         return
-    cron_job = crontab_session.new(command=command)
+    helper_text = f"Logging start and end for {name} execution."
+    cron_job = crontab_session.new(command=command, comment=helper_text)
     cron_job.setall(f"0 0 {day} * *")
 
 
