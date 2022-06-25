@@ -3,20 +3,33 @@
 > Several personal scripts for automation of everyday of tasks
 > using best practices with reference notes.
 
-## Install
+## Prerequisites
 
 Install requirements: [ex-fuse](https://packages.debian.org/source/buster/fuse-exfat), [Python3.9.13](https://www.python.org/), [Docker](https://www.docker.com/).
+
+For linux:
 
 ```bash
 sudo sh install-requirements.sh
 ```
 
+## Installation using Docker Compose
+
 Clone repository
 
 ```bash
 git clone https://github.com/maferelo/automata.git
-cd automata/
+cd automata
+docker-compose build
 ```
+
+## Running the services
+
+```bash
+docker-compose up
+```
+
+## Local development environment
 
 Use the package manager [poetry](https://python-poetry.org/) to install requirements.
 
@@ -30,9 +43,17 @@ poetry install
 
 Use .env file to setup the Automata configuration
 
+SCHELUDER_SCRIPTS
+
+Name of files to run in the scripts directory e.g. "update,cleanup,backup"
+
+TELEGRAM_TOKEN
+
+TELEGRAM_CHAT_ID=
+
 TZ
 
-Timezone for the project (optional) e.g. 'America/Bogota'
+Timezone for the project (optional) e.g. "America/Bogota"
 
 ## Usage
 
@@ -43,12 +64,13 @@ python automata/main.py --help
 
 ## Features
 
-- reset_jobs: Set the cronjobs to run consecutive by day of month.
+- reset_jobs: Set the scripts to run consecutive by day of month.
 
-## Contributing
+### Scripts
 
-If you'd like to contribute, please fork the repository and use a feature
-branch. Pull requests are warmly welcome.
+- update: Update the raspberrypi
+- cleanup: Clean after reboot from update
+- backup: Clone rpi to hdd
 
 ## Links
 
