@@ -1,20 +1,25 @@
-click==8.1.3; python_version >= "3.7" \
-    --hash=sha256:bb4d8133cb15a609f44e8213d9b391b0809795062913b383c62be0ee95b1db48 \
-    --hash=sha256:7682dc8afb30297001674575ea00d1814d808d6a36af415a82bd481d37ba7b8e
-colorama==0.4.4; python_version >= "3.7" and python_full_version < "3.0.0" and platform_system == "Windows" or platform_system == "Windows" and python_version >= "3.7" and python_full_version >= "3.5.0" \
-    --hash=sha256:9f47eda37229f68eee03b24b9748937c7dc3868f906e8ba69fbcbdd3bc5dc3e2 \
-    --hash=sha256:5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b
-python-crontab==2.6.0 \
-    --hash=sha256:1e35ed7a3cdc3100545b43e196d34754e6551e7f95e4caebbe0e1c0ca41c2f1b
-python-dateutil==2.8.2; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.3.0" \
-    --hash=sha256:0123cacc1627ae19ddf3c27a5de5bd67ee4586fbdd6440d9748f8abb483d3e86 \
-    --hash=sha256:961d03dc3453ebbc59dbdea9e4e11c5651520a876d0f4db161e8674aae935da9
-python-dotenv==0.20.0; python_version >= "3.5" \
-    --hash=sha256:b7e3b04a59693c42c36f9ab1cc2acc46fa5df8c78e178fc33a8d4cd05c8d498f \
-    --hash=sha256:d92a187be61fe482e4fd675b6d52200e7be63a12b724abbf931a40ce4fa92938
-six==1.16.0; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.3.0" \
-    --hash=sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254 \
-    --hash=sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926
-typer==0.4.1; python_version >= "3.6" \
-    --hash=sha256:e8467f0ebac0c81366c2168d6ad9f888efdfb6d4e1d3d5b4a004f46fa444b5c3 \
-    --hash=sha256:5646aef0d936b2c761a10393f0384ee6b5c7fe0bb3e5cd710b17134ca1d99cff
+anyio==3.6.1; python_version >= "3.6" and python_full_version >= "3.6.2"
+apscheduler==3.6.3; python_version >= "3.6"
+cachetools==4.2.2; python_version >= "3.6" and python_version < "4.0"
+certifi==2022.6.15; python_version >= "3.6"
+click==8.1.3; python_version >= "3.7"
+colorama==0.4.4; python_version >= "3.7" and python_full_version < "3.0.0" and platform_system == "Windows" or platform_system == "Windows" and python_version >= "3.7" and python_full_version >= "3.5.0"
+fastapi==0.78.0; python_full_version >= "3.6.1"
+h11==0.13.0; python_version >= "3.7"
+idna==3.3; python_version >= "3.6" and python_full_version >= "3.6.2"
+pydantic==1.9.1; python_full_version >= "3.6.1"
+python-crontab==2.6.0
+python-dateutil==2.8.2; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.3.0"
+python-dotenv==0.20.0; python_version >= "3.5"
+python-telegram-bot==13.12; python_version >= "3.6"
+pytz-deprecation-shim==0.1.0.post0; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.6.0" and python_version >= "3.6"
+pytz==2022.1; python_version >= "3.6"
+six==1.16.0; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.3.0" and python_version >= "3.6"
+sniffio==1.2.0; python_version >= "3.6" and python_full_version >= "3.6.2"
+starlette==0.19.1; python_version >= "3.6" and python_full_version >= "3.6.1"
+tornado==6.1; python_version >= "3.6"
+typer==0.4.1; python_version >= "3.6"
+typing-extensions==4.2.0; python_version >= "3.7" and python_full_version >= "3.6.1" and python_version < "3.10"
+tzdata==2022.1; platform_system == "Windows" and python_version >= "3.6" and (python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.6.0" and python_version >= "3.6")
+tzlocal==4.2; python_version >= "3.6"
+uvicorn==0.18.1; python_version >= "3.7"
