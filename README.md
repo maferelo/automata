@@ -27,6 +27,7 @@ docker-compose build
 
 ```bash
 docker-compose up
+docker-compose logs -f
 ```
 
 ## Local development environment
