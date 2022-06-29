@@ -111,6 +111,17 @@ python automata/main.py --help
 - cleanup: Clean after reboot from update
 - backup: Clone rpi to hdd
 
+## Deployments using [Heroku](https://python-poetry.org/)
+
+```bash
+heroku create -a automata
+heroku addons:create heroku-postgresql:hobby-dev --version=14
+heroku container:login
+heroku container:push web
+heroku container:release web
+heroku open
+```
+
 ## Links
 
 - Project homepage: https://your.github.com/automata/

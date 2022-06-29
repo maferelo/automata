@@ -1,4 +1,4 @@
-FROM python:3.8 as requirements-stage
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8 as requirements-stage
 
 WORKDIR /tmp
 
@@ -21,6 +21,8 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /app
 
 COPY --from=requirements-stage /tmp/requirements.txt /app/requirements.txt
+
+RUN cat /app/requirements.txt
 
 RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
 
