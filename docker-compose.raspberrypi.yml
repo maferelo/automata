@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  webpi:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.raspberrypi
+    command: uvicorn app.main:app --host 0.0.0.0
+    volumes:
+      - .:/app
+    ports:
+      - "8000"
+    environment:
+      - DATABASE_URL=postgresql://automata:automata@db:5432/automata
+    depends_on:
+      - db
+  db:
+    image: postgres:14-alpine
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "5432"
+    environment:
+      - POSTGRES_USER=automata
+      - POSTGRES_PASSWORD=automata
+      - POSTGRES_DB=automata
+
+volumes:
+  postgres_data:

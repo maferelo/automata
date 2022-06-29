@@ -73,9 +73,18 @@ poetry install
 
 ## Running the services
 
+Local
+
 ```bash
 docker-compose up
 docker-compose logs -f
+```
+
+On the raspberrypi
+
+```bash
+docker-compose -f docker-compose.raspberrypi.yml build
+docker-compose -f docker-compose.raspberrypi.yml up
 ```
 
 ### Initial Configuration
@@ -111,7 +120,9 @@ python automata/main.py --help
 - cleanup: Clean after reboot from update
 - backup: Clone rpi to hdd
 
-## Deployments using [Heroku](https://python-poetry.org/)
+## Deployments
+
+Using [Heroku](https://python-poetry.org/)
 
 ```bash
 heroku create -a automata
