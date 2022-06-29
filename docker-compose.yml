@@ -2,28 +2,28 @@ version: '3.8'
 
 services:
   web:
+    restart: always
     build: .
     command: uvicorn app.main:app --host 0.0.0.0
     volumes:
       - .:/app
     ports:
-      - 8008:8000
+      - "8000"
     environment:
-      - DATABASE_URL=postgresql://fastapi_traefik:fastapi_traefik@db:5432/fastapi_traefik
+      - DATABASE_URL=postgresql://automata:automata@db:5432/automata
     depends_on:
       - db
-    restart: always
   db:
     image: postgres:14-alpine
+    restart: always
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-    expose:
-      - 5432
+    ports:
+      - "5432"
     environment:
-      - POSTGRES_USER=fastapi_traefik
-      - POSTGRES_PASSWORD=fastapi_traefik
-      - POSTGRES_DB=fastapi_traefik
-    restart: always
+      - POSTGRES_USER=automata
+      - POSTGRES_PASSWORD=automata
+      - POSTGRES_DB=automata
 
 volumes:
   postgres_data:
