@@ -22,5 +22,5 @@ class User(ormar.Model):
     active: bool = ormar.Boolean(default=True, nullable=False)
 
 
-engine = sqlalchemy.create_engine(settings.db_url)
+engine = sqlalchemy.create_engine(settings.db_url, pool_size=4, max_overflow=0)
 metadata.create_all(engine)
