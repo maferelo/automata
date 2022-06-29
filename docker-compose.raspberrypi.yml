@@ -10,7 +10,7 @@ services:
     volumes:
       - .:/app
     ports:
-      - "8000"
+      - "8000:8000"
     environment:
       - DATABASE_URL=postgresql://automata:automata@db:5432/automata
     depends_on:
