@@ -88,7 +88,7 @@ Name of files to run in the scripts directory e.g. "update,cleanup,backup"
 
 TELEGRAM_TOKEN
 
-TELEGRAM_CHAT_ID=
+TELEGRAM_CHAT_ID
 
 TZ
 
