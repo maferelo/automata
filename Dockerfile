@@ -22,8 +22,6 @@ WORKDIR /app
 
 COPY --from=requirements-stage /tmp/requirements.txt /app/requirements.txt
 
-RUN cat /app/requirements.txt
-
 RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
 
 # copy project
