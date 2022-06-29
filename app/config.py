@@ -8,3 +8,4 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
+settings.db_url = settings.db_url.replace("postgres://", "postgresql://", 1)
