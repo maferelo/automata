@@ -5,29 +5,60 @@
 
 ## Prerequisites
 
-Install requirements: [ex-fuse](https://packages.debian.org/source/buster/fuse-exfat), [Python3.9.13](https://www.python.org/), [Docker](https://www.docker.com/).
-
-For linux:
-
-```bash
-sudo sh install-requirements.sh
-```
-
-## Installation using Docker Compose
+Install requirements: [ex-fuse](https://packages.debian.org/source/buster/fuse-exfat), [Python3.8.13](https://www.python.org/), [Docker](https://www.docker.com/), [Pyenv](https://github.com/pyenv/pyenv).
 
 Clone repository
 
 ```bash
 git clone https://github.com/maferelo/automata.git
 cd automata
+```
+
+#### For linux:
+
+```bash
+sudo sh start-raspberry.sh
+```
+
+#### For Mac
+
+Install [Homebrew](https://brew.sh/).
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+## Installation using Docker Compose
+
+```bash
+cd automata
 docker-compose build
 ```
 
-## Running the services
+### Intall python
+
+Add the following to .bash_profile so that you can hit pyenv.
 
 ```bash
-docker-compose up
-docker-compose logs -f
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+```
+
+Reload .bash_profile.
+
+```bash
+source ~/.bash_profile
+```
+
+```bash
+pyenv install 3.8.13
+```
+
+Change the version.
+
+```bash
+pyenv global 3.8.13
 ```
 
 ## Local development environment
@@ -38,6 +69,13 @@ Use the package manager [poetry](https://python-poetry.org/) to install requirem
 curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 
 poetry install
+```
+
+## Running the services
+
+```bash
+docker-compose up
+docker-compose logs -f
 ```
 
 ### Initial Configuration
