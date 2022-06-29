@@ -1,12 +1,8 @@
+# Update rpi and install requirements for project
+
 apt-get update -y
 apt-get upgrade -y
-
-# Python 3.9.13
-wget https://www.python.org/ftp/python/3.9.13/Python-3.9.13.tgz
-tar -zxvf Python-3.9.13.tgz
-cd Python-3.9.13
-./configure --enable-optimizations
-sudo make altinstall
+sudo apt-get install -y git openssl libssl-dev libbz2-dev libreadline-dev libsqlite3-dev
 
 # Enable support for exFAT filesystems for the HDD
 apt-get install exfat-fuse
