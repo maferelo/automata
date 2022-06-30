@@ -124,13 +124,20 @@ python automata/main.py --help
 
 Using [Heroku](https://python-poetry.org/)
 
+To create an app
+
 ```bash
 heroku create -a automata
-heroku addons:create heroku-postgresql:hobby-dev --version=14
-heroku container:login
-heroku container:push web
-heroku container:release web
+heroku stack:set container
+```
+
+To connecto to an existing app
+
+```bash
+heroku git:remote -a automatah
+git push heroku master
 heroku open
+heroku logs --tail
 ```
 
 ## Links
