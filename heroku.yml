@@ -6,4 +6,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: uvicorn app.main:app
+  web: uvicorn app.main:app --workers 4
