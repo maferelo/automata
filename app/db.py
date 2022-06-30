@@ -22,5 +22,6 @@ class User(ormar.Model):
     active: bool = ormar.Boolean(default=True, nullable=False)
 
 
-engine = sqlalchemy.create_engine(settings.db_url, pool_size=1, max_overflow=0)
+# Comply with heroku postgres max connections
+engine = sqlalchemy.create_engine(settings.db_url, pool_size=20, max_overflow=0)
 metadata.create_all(engine)
