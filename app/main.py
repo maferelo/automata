@@ -8,7 +8,6 @@ app = FastAPI(title="FastAPI, Docker, and Traefik")
 @app.get("/")
 async def read_root():
     return await User.objects.all()
-    # return [{"id": 1, "email": "test@test.com", "active": True}]
 
 
 @app.on_event("startup")
