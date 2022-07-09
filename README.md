@@ -28,7 +28,9 @@ Install [Homebrew](https://brew.sh/).
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-## Open the project in a container
+## Development
+
+We use [Remote containers](https://code.visualstudio.com/docs/remote/containers-tutorial).
 
 1. Press F1 to open the Command Palette.
 2. Type reopen in container.
@@ -48,6 +50,24 @@ visit https://localhost:8000/
 cd automata
 docker-compose build
 ```
+
+### Running the services
+
+Local
+
+```bash
+docker-compose up
+docker-compose logs -f
+```
+
+On the rpi
+
+```bash
+docker-compose -f docker-compose.rpi.yml build
+docker-compose -f docker-compose.rpi.yml up
+```
+
+## Local development environment
 
 ### Intall python
 
@@ -75,30 +95,12 @@ Change the version.
 pyenv global 3.8.13
 ```
 
-## Local development environment
-
 Use the package manager [poetry](https://python-poetry.org/) to install requirements.
 
 ```bash
 curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 
 poetry install
-```
-
-## Running the services
-
-Local
-
-```bash
-docker-compose up
-docker-compose logs -f
-```
-
-On the rpi
-
-```bash
-docker-compose -f docker-compose.rpi.yml build
-docker-compose -f docker-compose.rpi.yml up
 ```
 
 ### Initial Configuration
