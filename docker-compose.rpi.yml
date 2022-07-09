@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  webpi:
+    extends:
+      file: docker-compose.yml
+      service: web
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Update 'VERSION' to pick a version of the source image.
+        # Append -bullseye or -buster to pin to an OS version.
+        # Use -bullseye variants on local arm64/Apple Silicon.
+        SOURCE: "python"
+        VERSION: "3.8.13"
+        STAGING_VARIANT: "-buster"
+        VARIANT: "-buster"
+  db:
+    extends:
+      file: docker-compose.yml
+      service: db
+
+volumes:
+  postgres_data:

@@ -28,6 +28,20 @@ Install [Homebrew](https://brew.sh/).
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
+## Open the project in a container
+
+1. Press F1 to open the Command Palette.
+2. Type reopen in container.
+3. Select Remote Containers: Reopen in Container from the list of available options.
+
+Inside the container run:
+
+```bash
+uvicorn app.main:app --host 0.0.0.0
+```
+
+visit https://localhost:8000/
+
 ## Installation using Docker Compose
 
 ```bash
@@ -80,11 +94,11 @@ docker-compose up
 docker-compose logs -f
 ```
 
-On the raspberrypi
+On the rpi
 
 ```bash
-docker-compose -f docker-compose.raspberrypi.yml build
-docker-compose -f docker-compose.raspberrypi.yml up
+docker-compose -f docker-compose.rpi.yml build
+docker-compose -f docker-compose.rpi.yml up
 ```
 
 ### Initial Configuration
@@ -116,7 +130,7 @@ python automata/main.py --help
 
 ### Scripts
 
-- update: Update the raspberrypi
+- update: Update the rpi
 - cleanup: Clean after reboot from update
 - backup: Clone rpi to hdd
 

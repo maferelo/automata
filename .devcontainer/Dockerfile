@@ -1,7 +1,7 @@
-ARG IMAGE_SOURCE=python
-ARG PYTHON_VERSION=3.8.13
+ARG SOURCE=python
+ARG VERSION=3.8.13
 ARG VARIANT=-buster
-FROM ${IMAGE_SOURCE}:${PYTHON_VERSION}${VARIANT} as requirements-stage
+FROM ${SOURCE}:${VERSION}${VARIANT} as requirements-stage
 
 WORKDIR /app
 

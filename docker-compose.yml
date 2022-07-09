@@ -4,27 +4,34 @@ services:
   web:
     restart: always
     env_file: .env
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Update 'VERSION' to pick a version of the source image.
+        # Append -bullseye or -buster to pin to an OS version.
+        # Use -bullseye variants on local arm64/Apple Silicon.
+        SOURCE: "tiangolo/uvicorn-gunicorn-fastapi"
+        VERSION: "python3.8"
+        STAGING_VARIANT: ""
+        VARIANT: "-slim"
     command: uvicorn app.main:app --host 0.0.0.0
     volumes:
-      - .:/app
+      - .:/workspace
     ports:
       - "8000:8000"
-    environment:
-      - DATABASE_URL=postgresql://automata:automata@db:5432/automata
     depends_on:
       - db
   db:
     image: postgres:14-alpine
-    restart: always
+    restart: unless-stopped
+    # To persist db data
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-    ports:
-      - "5432"
     environment:
-      - POSTGRES_USER=automata
-      - POSTGRES_PASSWORD=automata
-      - POSTGRES_DB=automata
+      POSTGRES_DB: automata
+      POSTGRES_USER: automata
+      POSTGRES_PASSWORD: automata
 
 volumes:
   postgres_data:
