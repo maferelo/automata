@@ -1,7 +1,7 @@
-ARG SOURCE=python
-ARG VERSION=3.8.13
+ARG SOURCE=tiangolo/uvicorn-gunicorn-fastapi
+ARG VERSION=python3.8
 ARG STAGING_VARIANT=-buster
-ARG VARIANT=-buster
+ARG VARIANT=-slim
 FROM ${SOURCE}:${VERSION}${STAGING_VARIANT} as requirements-stage
 
 WORKDIR /tmp

@@ -7,10 +7,5 @@ setup:
 build:
   docker:
     web: Dockerfile
-  args:
-    SOURCE: "tiangolo/uvicorn-gunicorn-fastapi"
-    VERSION: "python3.8"
-    STAGING_VARIANT: ""
-    VARIANT: "-slim"
 run:
   web: uvicorn app.main:app --host=0.0.0.0 --port=${PORT:-5000}
