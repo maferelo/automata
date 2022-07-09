@@ -1,6 +1,6 @@
 ARG SOURCE=tiangolo/uvicorn-gunicorn-fastapi
 ARG VERSION=python3.8
-ARG STAGING_VARIANT=-buster
+ARG STAGING_VARIANT=
 ARG VARIANT=-slim
 FROM ${SOURCE}:${VERSION}${STAGING_VARIANT} as requirements-stage
 
