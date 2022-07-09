@@ -8,9 +8,6 @@ build:
   docker:
     web: Dockerfile
   args:
-    # Update 'VERSION' to pick a version of Python: 3, 3.10, 3.9, 3.8, 3.7
-    # Append -bullseye or -buster to pin to an OS version.
-    # Use -bullseye variants on local arm64/Apple Silicon.
     SOURCE: "tiangolo/uvicorn-gunicorn-fastapi"
     VERSION: "python3.8"
     STAGING_VARIANT: ""
