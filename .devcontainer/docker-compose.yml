@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   web:
     # If you want add a non-root user to your Dockerfile, you can use the "remoteUser"
