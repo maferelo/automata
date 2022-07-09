@@ -138,6 +138,10 @@ python automata/main.py --help
 
 Using [Heroku](https://python-poetry.org/)
 
+```bash
+heroku login
+```
+
 To create an app
 
 ```bash
