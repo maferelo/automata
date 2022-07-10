@@ -154,8 +154,7 @@ heroku stack:set container
 To connecto to an existing app
 
 ```bash
-heroku git:remote -a automatah
-git push heroku master
+git push heroku main
 heroku open
 heroku logs --tail
 ```
