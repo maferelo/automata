@@ -4,8 +4,6 @@ services:
       file: docker-compose.yml
       service: web
     build:
-      context: .
-      dockerfile: Dockerfile
       args:
         # Update 'VERSION' to pick a version of the source image.
         # Append -bullseye or -buster to pin to an OS version.
@@ -14,10 +12,10 @@ services:
         VERSION: "3.8.13"
         STAGING_VARIANT: "-buster"
         VARIANT: "-buster"
-  db:
+  postgres:
     extends:
       file: docker-compose.yml
-      service: db
+      service: postgres
 
 volumes:
   postgres_data:
