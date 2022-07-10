@@ -5,11 +5,7 @@ services:
       service: web
     build:
       args:
-        # Update 'VERSION' to pick a version of the source image.
-        # Append -bullseye or -buster to pin to an OS version.
-        # Use -bullseye variants on local arm64/Apple Silicon.
-        SOURCE: "python"
-        VERSION: "3.8.13"
+        IMAGE: "python:3.8.13"
         STAGING_VARIANT: "-buster"
         VARIANT: "-buster"
   postgres:

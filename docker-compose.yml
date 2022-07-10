@@ -15,10 +15,6 @@ x-app: &default-app
 
 services:
   postgres:
-    environment:
-      POSTGRES_DB: automata
-      POSTGRES_PASSWORD: automata
-      POSTGRES_USER: automata
     deploy:
       resources:
         limits:
@@ -37,15 +33,17 @@ services:
     <<: *default-app
     build:
       args:
-        SOURCE: "tiangolo/uvicorn-gunicorn-fastapi"
+        IMAGE: "tiangolo/uvicorn-gunicorn-fastapi:python3.8"
         STAGING_VARIANT: ""
         VARIANT: "-slim"
-        VERSION: "python3.8"
     command: uvicorn app.main:app --host 0.0.0.0
+    deploy:
+      resources:
+        limits:
+          cpus: "${DOCKER_WEB_CPUS:-0}"
+          memory: "${DOCKER_WEB_MEMORY:-0}"
     ports:
-      - "8000:8000"
-    volumes:
-      - .:/workspace
+      - "${DOCKER_WEB_PORT_FORWARD:-127.0.0.1:8000}:8000"
 
 volumes:
-  postgres:
+  postgres: {}
