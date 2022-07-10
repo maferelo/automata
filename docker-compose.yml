@@ -1,37 +1,51 @@
+x-app: &default-app
+  build:
+    context: "."
+    target: "app"
+  depends_on:
+    - "postgres"
+  env_file:
+    - ".env"
+  init: true
+  restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
+  stop_grace_period: "3s"
+  tty: true
+  volumes:
+    - "${DOCKER_WEB_VOLUME:-./public:/app/public}"
+
 services:
-  web:
-    init: true
-    restart: always
-    env_file: .env
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        # Update 'VERSION' to pick a version of the source image.
-        # Append -bullseye or -buster to pin to an OS version.
-        # Use -bullseye variants on local arm64/Apple Silicon.
-        SOURCE: ${MAIN_DOCKER_IMAGE_SOURCE}
-        VERSION: "python3.8"
-        STAGING_VARIANT: ""
-        VARIANT: "-slim"
-    command: uvicorn app.main:app --host 0.0.0.0
-    volumes:
-      - .:/workspace
-    ports:
-      - "8000:8000"
-    depends_on:
-      - db
-  db:
-    image: postgres:14-alpine
-    init: true
-    restart: unless-stopped
-    # To persist db data
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
+  postgres:
     environment:
       POSTGRES_DB: automata
-      POSTGRES_USER: automata
       POSTGRES_PASSWORD: automata
+      POSTGRES_USER: automata
+    deploy:
+      resources:
+        limits:
+          cpus: "${DOCKER_POSTGRES_CPUS:-0}"
+          memory: "${DOCKER_POSTGRES_MEMORY:-0}"
+    env_file:
+      - ".env"
+    image: "postgres:14.4-bullseye"
+    init: true
+    restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
+    stop_grace_period: "3s"
+    volumes:
+      - postgres:/var/lib/postgresql/data/
+
+  web:
+    <<: *default-app
+    build:
+      args:
+        SOURCE: "tiangolo/uvicorn-gunicorn-fastapi"
+        STAGING_VARIANT: ""
+        VARIANT: "-slim"
+        VERSION: "python3.8"
+    command: uvicorn app.main:app --host 0.0.0.0
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/workspace
 
 volumes:
-  postgres_data:
+  postgres:
