@@ -35,7 +35,7 @@ RUN pip install --no-cache-dir -r /app/requirements.txt
 
 ENV PYTHONDONTWRITEBYTECODE="true" \
     PYTHONUNBUFFERED="true" \
-    PYTHONPATH="." \
+    PYTHONPATH="${PYTHONPATH}:/home/python/.local/lib/python3.8/site-packages" \
     PATH="${PATH}:/home/python/.local/bin" \
     USER="python"
 
