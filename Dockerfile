@@ -41,4 +41,4 @@ RUN pip install --no-cache-dir -r /app/requirements.txt
 
 COPY --chown=python:python . .
 
-CMD ["uvicorn", "app.main:app", "--host=0.0.0.0", "--port=${PORT:-5000}"]
+CMD ["uvicorn", "app.main:app", "--host=0.0.0.0"]
