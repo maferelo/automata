@@ -22,6 +22,18 @@ class User(ormar.Model):
     active: bool = ormar.Boolean(default=True, nullable=False)
 
 
-# Comply with heroku postgres max connections
-engine = sqlalchemy.create_engine(settings.db_url, pool_size=20, max_overflow=0)
+class Books(ormar.Model):
+    class Meta(BaseMeta):
+        tablename = "books"
+
+    id: int = ormar.Integer(primary_key=True)
+    title: str = ormar.String(max_length=128, unique=True, nullable=False)
+    author: str = ormar.String(max_length=128, unique=False, nullable=False)
+
+
+engine = sqlalchemy.create_engine(
+    settings.db_url,
+    pool_size=settings.db_engine_pool_size,
+    max_overflow=settings.db_engine_max_overflow,
+)
 metadata.create_all(engine)

@@ -5,6 +5,8 @@ from pydantic import BaseSettings, Field
 
 class Settings(BaseSettings):
     db_url: str = Field(..., env="DATABASE_URL")
+    db_engine_pool_size: int = Field(20, env="DATABASE_ENGINE_POOL_SIZE")
+    db_engine_max_overflow: int = Field(0, env="DATABASE_ENGINE_MAX_OVERFLOW")
 
 
 settings = Settings()
