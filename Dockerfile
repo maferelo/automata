@@ -29,7 +29,7 @@ RUN useradd --create-home python \
 
 USER python
 
-COPY --from=stage --chown=python:python /tmp/requirements.txt /app/requirements.txt
+COPY --from=stage /tmp/requirements.txt /app/requirements.txt
 
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
@@ -39,4 +39,4 @@ ENV PYTHONDONTWRITEBYTECODE="true" \
     PATH="${PATH}:/home/python/.local/bin" \
     USER="python"
 
-COPY --chown=python:python . .
+COPY . .
