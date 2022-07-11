@@ -1,5 +1,5 @@
 ARG IMAGE=mcr.microsoft.com/vscode/devcontainers/python:0-3.8
-ARG VARIANT=bullseye
+ARG VARIANT=-bullseye
 
 
 FROM ${IMAGE}${VARIANT}
