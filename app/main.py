@@ -1,6 +1,6 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 
-from app.db import User, database
+from app.db import Book, User, database
 
 app = FastAPI(title="FastAPI, Docker, and Traefik")
 
@@ -22,3 +22,15 @@ async def startup():
 async def shutdown():
     if database.is_connected:
         await database.disconnect()
+
+
+@app.get("/books")
+async def get_books():
+    return await Book.objects.all()
+
+
+@app.post("/books")
+async def create_book(request: Request):
+    data = await request.json()
+    book = await Book.objects.create(**data)
+    return {"id": book.id}

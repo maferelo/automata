@@ -22,7 +22,7 @@ class User(ormar.Model):
     active: bool = ormar.Boolean(default=True, nullable=False)
 
 
-class Books(ormar.Model):
+class Book(ormar.Model):
     class Meta(BaseMeta):
         tablename = "books"
 
