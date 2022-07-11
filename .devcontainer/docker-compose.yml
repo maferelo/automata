@@ -4,7 +4,7 @@ services:
       dockerfile: .devcontainer/Dockerfile
       args:
         IMAGE: "mcr.microsoft.com/vscode/devcontainers/python:0-3.8"
-        VARIANT: "-bullseye"
+        VARIANT: "${VSCODE_DEV_IMAGE_VARIANT:-bullseye}"
     # Overrides default command so things don't shut down after the process ends.
     command: /bin/sh -c "while sleep 1000; do :; done"
  
