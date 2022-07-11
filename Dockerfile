@@ -1,6 +1,6 @@
 ARG IMAGE=tiangolo/uvicorn-gunicorn-fastapi:python3.8
 ARG STAGING_VARIANT=
-ARG VARIANT=slim
+ARG VARIANT=-slim
 
 
 FROM ${IMAGE}${STAGING_VARIANT} as stage
