@@ -33,8 +33,10 @@ COPY --from=stage --chown=python:python /tmp/requirements.txt /app/requirements.
 
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
-ENV PYTHONDONTWRITEBYTECODE 1 \
-    PYTHONUNBUFFERED 1 \
-    PYTHONPATH="${PYTHONPATH}:/home/python/.local/lib/python3.8/site-packages"
+ENV PYTHONDONTWRITEBYTECODE="true" \
+    PYTHONUNBUFFERED="true" \
+    PYTHONPATH="." \
+    PATH="${PATH}:/home/python/.local/bin" \
+    USER="python"
 
 COPY --chown=python:python . .
