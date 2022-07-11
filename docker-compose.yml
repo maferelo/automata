@@ -25,6 +25,8 @@ services:
       - ".env"
     image: "${DB_IMAGE:-postgres:14.4-bullseye}"
     init: true
+    ports:
+      - "5432:5432"
     restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
     stop_grace_period: "3s"
     volumes:

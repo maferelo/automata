@@ -1,17 +1,17 @@
 services:
-  webpi:
+  postgres:
     extends:
       file: docker-compose.yml
-      service: web
+      service: postgres
+  webpi:
     build:
       args:
         IMAGE: "${WEBPI_IMAGE:-python:3.8.13}"
         STAGING_VARIANT: "${WEBPI_IMAGE_STAGING_VARIANT:--buster}"
         VARIANT: "${WEBPI_IMAGE_VARIANT:--buster}"
-  postgres:
     extends:
       file: docker-compose.yml
-      service: postgres
+      service: web
 
 volumes:
   postgres_data:
