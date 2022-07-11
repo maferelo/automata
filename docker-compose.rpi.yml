@@ -5,7 +5,7 @@ services:
       service: web
     build:
       args:
-        IMAGE: "python:3.8.13"
+        IMAGE: "${WEBPI_IMAGE:-python:3.8.13}"
         STAGING_VARIANT: "${WEBPI_IMAGE_STAGING_VARIANT:-buster}"
         VARIANT: "${WEBPI_IMAGE_VARIANT:-buster}"
   postgres:

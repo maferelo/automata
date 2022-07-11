@@ -1,9 +1,9 @@
 ARG IMAGE=tiangolo/uvicorn-gunicorn-fastapi:python3.8
 ARG STAGING_VARIANT=
-ARG VARIANT=-slim
+ARG VARIANT=slim
 
 
-FROM ${IMAGE}${STAGING_VARIANT} as stage
+FROM ${IMAGE}-${STAGING_VARIANT} as stage
 
 WORKDIR /tmp
 
@@ -20,7 +20,7 @@ COPY ./pyproject.toml ./poetry.lock* /tmp/
 
 RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
 
-FROM ${IMAGE}${VARIANT}
+FROM ${IMAGE}-${VARIANT}
 
 WORKDIR /app
 
