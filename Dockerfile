@@ -32,13 +32,8 @@ USER python
 COPY --from=stage --chown=python:python /tmp/requirements.txt /app/requirements.txt
 
 ENV PYTHONDONTWRITEBYTECODE 1 \
-    PYTHONUNBUFFERED 1 \
-    PYTHONPATH="." \
-    PATH="${PATH}:/home/python/.local/bin" \
-    USER="python"
+    PYTHONUNBUFFERED 1
 
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
 COPY --chown=python:python . .
-
-CMD ["uvicorn", "app.main:app", "--host=0.0.0.0"]

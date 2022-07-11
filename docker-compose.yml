@@ -44,6 +44,7 @@ services:
           memory: "${DOCKER_WEB_MEMORY:-0}"
     ports:
       - "${DOCKER_WEB_PORT_FORWARD:-127.0.0.1:8000}:8000"
+    user: "python"
 
 volumes:
   postgres: {}
