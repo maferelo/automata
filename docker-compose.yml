@@ -1,4 +1,5 @@
-x-app: &default-app
+x-app:
+  &default-app
   build:
     context: "."
     target: "app"
@@ -22,7 +23,7 @@ services:
           memory: "${DOCKER_POSTGRES_MEMORY:-0}"
     env_file:
       - ".env"
-    image: "${DB_IMAGE:postgres:-14.4-bullseye}"
+    image: "${DB_IMAGE:-postgres:14.4-bullseye}"
     init: true
     restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
     stop_grace_period: "3s"
@@ -35,7 +36,7 @@ services:
       args:
         IMAGE: "${WEB_IMAGE:-tiangolo/uvicorn-gunicorn-fastapi:python3.8}"
         STAGING_VARIANT: "${WEB_IMAGE_STAGING_VARIANT:-}"
-        VARIANT: "${WEB_IMAGE_VARIANT:-slim}"
+        VARIANT: "${WEB_IMAGE_VARIANT:--slim}"
     command: uvicorn app.main:app --host 0.0.0.0
     deploy:
       resources:

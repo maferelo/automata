@@ -2,7 +2,7 @@ ARG IMAGE=mcr.microsoft.com/vscode/devcontainers/python:0-3.8
 ARG VARIANT=bullseye
 
 
-FROM ${IMAGE}-${VARIANT}
+FROM ${IMAGE}${VARIANT}
 
 WORKDIR /app
 

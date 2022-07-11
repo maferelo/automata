@@ -6,8 +6,8 @@ services:
     build:
       args:
         IMAGE: "${WEBPI_IMAGE:-python:3.8.13}"
-        STAGING_VARIANT: "${WEBPI_IMAGE_STAGING_VARIANT:-buster}"
-        VARIANT: "${WEBPI_IMAGE_VARIANT:-buster}"
+        STAGING_VARIANT: "${WEBPI_IMAGE_STAGING_VARIANT:--buster}"
+        VARIANT: "${WEBPI_IMAGE_VARIANT:--buster}"
   postgres:
     extends:
       file: docker-compose.yml
