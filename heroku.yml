@@ -5,10 +5,6 @@ setup:
     - plan: heroku-postgresql
       as: DATABASE
 build:
-  args:
-    IMAGE: "${WEB_IMAGE:-tiangolo/uvicorn-gunicorn-fastapi:python3.8}"
-    STAGING_VARIANT: "${WEB_IMAGE_STAGING_VARIANT:-}"
-    VARIANT: "${WEB_IMAGE_VARIANT:--slim}"
   docker:
     web: Dockerfile
 run:
