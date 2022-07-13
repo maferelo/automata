@@ -39,7 +39,7 @@ services:
         IMAGE: "${WEB_IMAGE:-tiangolo/uvicorn-gunicorn-fastapi:python3.8}"
         STAGING_VARIANT: "${WEB_IMAGE_STAGING_VARIANT:-}"
         VARIANT: "${WEB_IMAGE_VARIANT:--slim}"
-    command: uvicorn app.main:app --host 0.0.0.0
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0"]
     deploy:
       resources:
         limits:

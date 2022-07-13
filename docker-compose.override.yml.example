@@ -5,7 +5,7 @@ services:
       target: "webpack"
       args:
         - "NODE_ENV=${NODE_ENV:-production}"
-    command: "yarn run watch"
+    command: ["yarn", "run", "watch"]
     env_file:
       - ".env"
     volumes:
