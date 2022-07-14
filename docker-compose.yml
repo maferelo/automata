@@ -11,8 +11,6 @@ x-app:
   restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
   stop_grace_period: "3s"
   tty: true
-  volumes:
-    - "${DOCKER_WEB_VOLUME:-./public:/app/public}"
 
 services:
   postgres:
@@ -49,10 +47,12 @@ services:
       - "${DOCKER_WEB_PORT_FORWARD:-127.0.0.1:8000}:8000"
     healthcheck:
       test: "${DOCKER_WEB_HEALTHCHECK_TEST:-curl --fail http://localhost:8000 || exit 1}"
-      interval: 10s
-      timeout: 10s
-      start_period: 10s
+      interval: "10s"
+      timeout: "10s"
+      start_period: "10s"
       retries: 3
+    volumes:
+    - "${DOCKER_WEB_VOLUME:-./public:/app/public}"
 
 volumes:
   postgres: {}
