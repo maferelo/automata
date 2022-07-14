@@ -22,6 +22,7 @@ ENV PATH "/home/vscode/.poetry/bin:$PATH"
 
 COPY ./pyproject.toml ./poetry.lock* /app/
 
-RUN poetry config virtualenvs.create false && poetry install 
+RUN --mount=type=cache,target=~/.cache/pypoetry \
+    && poetry config virtualenvs.create false && poetry install 
 
 COPY . .
