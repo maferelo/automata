@@ -1,12 +1,18 @@
 services:
-  webpack:
-    build:
-      context: "."
-      target: "webpack"
-      args:
-        - "NODE_ENV=${NODE_ENV:-production}"
-    command: ["yarn", "run", "watch"]
-    env_file:
-      - ".env"
+  pgadmin:
+    depends_on:
+    - "postgres"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@app.com"
+      PGADMIN_DEFAULT_PASSWORD: "PgAdmin2022!"
+    image: dpage/pgadmin4
+    init: true
+    ports:
+      - "5050:5050"
+    restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
+    stop_grace_period: "3s"
     volumes:
-      - ".:/app"
+      - pgadmin:/var/lib/pgadmin
+
+volumes:
+  pgadmin:
