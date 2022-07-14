@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request
 
 from app.db import Book, User, database
 
-app = FastAPI(title="FastAPI, Docker, and Traefik")
+app = FastAPI(title="Automata")
 
 
 @app.get("/")
