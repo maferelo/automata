@@ -39,7 +39,7 @@ We use [Remote containers](https://code.visualstudio.com/docs/remote/containers-
 Inside the container run:
 
 ```bash
-uvicorn app.main:app --host 0.0.0.0
+uvicorn app.main:app --host 0.0.0.0 --reload
 ```
 
 visit https://localhost:8000/
