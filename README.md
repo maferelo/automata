@@ -44,6 +44,10 @@ uvicorn app.main:app --host 0.0.0.0 --reload
 
 visit https://localhost:8000/
 
+```bash
+pre-commit run --all-files
+```
+
 ## Installation using Docker Compose
 
 ```bash

@@ -2,6 +2,15 @@ repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.3.0
     hooks:
-    -   id: check-yaml
-    -   id: end-of-file-fixer
-    -   id: trailing-whitespace
+    - id: trailing-whitespace
+    - id: mixed-line-ending
+    - id: check-added-large-files
+      args: ['--maxkb=1000']
+    - id: end-of-file-fixer
+    - id: check-yaml
+    - id: check-json
+    - id: pretty-format-json
+      args: ['--autofix']
+    - id: check-merge-conflict
+    - id: check-case-conflict
+    - id: check-docstring-first
