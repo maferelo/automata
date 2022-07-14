@@ -22,12 +22,9 @@ RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
 
 FROM ${IMAGE}${VARIANT}
 
-RUN useradd --create-home python \
-    && chown python:python -R /app
+RUN addgroup --system app && adduser --system --group app
 
 USER app
-
-WORKDIR /app
 
 COPY --from=stage /tmp/requirements.txt /app/requirements.txt
 
