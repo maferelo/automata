@@ -2,7 +2,7 @@ import string
 import random
 
 class VehicleInfo:
-    
+
     def __init__(self, brand, electric, catalogue_price):
         self.brand = brand
         self.electric = electric

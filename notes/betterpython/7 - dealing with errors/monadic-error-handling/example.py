@@ -12,7 +12,7 @@ class SQLite():
         return self.conn.cursor()
     def __exit__(self, type, value, traceback):
         if self.conn: self.conn.close()
-    
+
 class NotFoundError(Exception):
     pass
 
@@ -40,7 +40,7 @@ def fetch_blog_from_db(blog_id):
 @safe
 def blog_to_dict(item) -> 'Blog':
     """Convert SQLite result to dictionary."""
-    return { 
+    return {
         'id': item[0],
         'published': item[1],
         'title': item[2],

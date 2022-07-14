@@ -16,7 +16,7 @@ class Controller:
     def __init__(self, model, view):
         self.model = model
         self.view = view
-    
+
     def start(self):
         self.view.setup(self)
         self.view.start_main_loop()
@@ -44,7 +44,7 @@ class View(ABC):
     @abstractmethod
     def clear_list(self):
         pass
-    
+
     @abstractmethod
     def start_main_loop(self):
         pass
@@ -74,7 +74,7 @@ class TkView(View):
 
     def clear_list(self):
         self.list.delete(0, tk.END)
-    
+
     def start_main_loop(self):
         # start the loop
         self.root.mainloop()

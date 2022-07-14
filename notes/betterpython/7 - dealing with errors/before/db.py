@@ -1,7 +1,7 @@
 import sqlite3
 
 def blog_lst_to_json(item):
-    return { 
+    return {
         'id': item[0],
         'published': item[1],
         'title': item[2],
@@ -14,4 +14,3 @@ def fetch_blogs():
 
 def fetch_blog(id: str):
     pass
-

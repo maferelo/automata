@@ -4,7 +4,7 @@ import string
 import random
 from abc import ABC, abstractmethod
 
-# functional strategy 
+# functional strategy
 def generate_uuid1():
     return uuid.uuid1()
 
@@ -23,7 +23,7 @@ class Controller:
         self.model = model
         self.view = view
         self.generate_uuid = generate_uuid
-    
+
     def start(self):
         self.view.setup(self)
         self.view.start_main_loop()
@@ -50,7 +50,7 @@ class View(ABC):
     @abstractmethod
     def clear_list(self):
         pass
-    
+
     @abstractmethod
     def start_main_loop(self):
         pass
@@ -80,7 +80,7 @@ class TkView(View):
 
     def clear_list(self):
         self.list.delete(0, tk.END)
-    
+
     def start_main_loop(self):
         # start the loop
         self.root.mainloop()

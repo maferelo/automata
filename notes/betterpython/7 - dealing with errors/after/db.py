@@ -7,7 +7,7 @@ class NotAuthorizedError(Exception):
     pass
 
 def blog_lst_to_json(item):
-    return { 
+    return {
         'id': item[0],
         'published': item[1],
         'title': item[2],
@@ -49,7 +49,7 @@ def fetch_blog(id: str):
         # return the result or raise an error
         if result is None:
             raise NotFoundError(f'Unable to find blog with id {id}.')
-        
+
         data = blog_lst_to_json(result)
         if not data['public']:
             raise NotAuthorizedError(f'You are not allowed to access blog with id {id}.')

@@ -15,7 +15,7 @@ class VehicleInfo:
         if self.electric:
             tax_percentage = 0.02
         return tax_percentage * (max(self.catalogue_price - tax_exemption_amount, 0))
-    
+
     # you can only lease this car if the catalogue price is not more than 70% of
     # your year income; year_income should be >= 0
     def can_lease(self, year_income: int) -> bool:

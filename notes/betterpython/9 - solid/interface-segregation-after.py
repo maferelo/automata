@@ -45,7 +45,7 @@ class DebitPaymentProcessor(PaymentProcessor_SMS):
     def auth_sms(self, code):
         print(f"Verifying SMS code {code}")
         self.verified = True
-    
+
     def pay(self, order):
         if not self.verified:
             raise Exception("Not authorized")

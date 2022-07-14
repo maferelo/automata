@@ -16,7 +16,7 @@ class TestVehicleInfoMethods(unittest.TestCase):
     # def test_compute_tax_exemption(self):
     #     v = VehicleInfo("BMW", False, 10000)
     #     self.assertEqual(v.compute_tax(5000), 250)
-    
+
     # def test_compute_tax_exemption_negative(self):
     #     v = VehicleInfo("BMW", False, 10000)
     #     self.assertRaises(ValueError, v.compute_tax, -5000)

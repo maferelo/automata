@@ -7,7 +7,7 @@ from lib.stringtools import get_random_string
 def register_new_user(name: str, password: str, email: str):
     # create an entry in the database
     user = create_user(name, password, email)
-    
+
     # post a Slack message to sales department
     post_slack_message("sales",
         f"{user.name} has registered with email address {user.email}. Please spam this person incessantly.")

@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from typing import List
 
 class TradingBot(ABC):
-    
+
     def connect(self):
         print(f"Connecting to Crypto exchange...")
 

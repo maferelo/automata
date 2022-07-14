@@ -11,15 +11,15 @@ def solve(x, space, _print=False):
         segments.append(temp_segment)
 
     if _print: print(f'{segments=}')
-        
+
     segment_minimas = [min(segment) for segment in segments]
-    
+
     if _print: print(f'{segment_minimas=}')
-    
+
     max_segment_minimas = max(segment_minimas)
 
     if _print: print(f'{max_segment_minimas=}')
-    
+
     return max_segment_minimas
 
 def solve(x, space):
@@ -43,18 +43,18 @@ def main():
 
     for x, space, solution in tests:
         try:
-            result = solve(x, space) 
+            result = solve(x, space)
             assert solution == result
         except Exception:
             print(f'{space=}', f'{x=}', f'{solution=}', f'{result=}')
-            solve(x, space, True) 
+            solve(x, space, True)
 
     finish_time = timeit.default_timer()
 
     total_time = finish_time - start_time
 
     print(f'{total_time=}')
-        
+
 
 
 
