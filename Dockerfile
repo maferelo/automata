@@ -24,10 +24,10 @@ FROM ${IMAGE}${VARIANT}
 
 WORKDIR /app
 
-RUN useradd --create-home python \
-    && chown python:python -R /app
+RUN addgroup --gid 1001 --system app && \
+    adduser --no-create-home --shell /bin/false --disabled-password --uid 1001 --system --group app
 
-USER python
+USER app
 
 COPY --from=stage /tmp/requirements.txt /app/requirements.txt
 
@@ -37,6 +37,6 @@ ENV PYTHONDONTWRITEBYTECODE="true" \
     PYTHONUNBUFFERED="true" \
     PYTHONPATH="${PYTHONPATH}:/home/python/.local/lib/python3.8/site-packages" \
     PATH="${PATH}:/home/python/.local/bin" \
-    USER="python"
+    USER="app"
 
 COPY . .
