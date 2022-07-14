@@ -2,15 +2,28 @@ repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.3.0
     hooks:
-    - id: trailing-whitespace
-    - id: mixed-line-ending
-    - id: check-added-large-files
-      args: ['--maxkb=1000']
-    - id: end-of-file-fixer
-    - id: check-yaml
-    - id: check-json
-    - id: pretty-format-json
-      args: ['--autofix']
-    - id: check-merge-conflict
-    - id: check-case-conflict
-    - id: check-docstring-first
+    -   id: check-added-large-files
+        args: ['--maxkb=1000']
+    -   id: check-ast
+    -   id: check-byte-order-marker
+    -   id: check-case-conflict
+    -   id: check-docstring-first
+    -   id: check-json
+    -   id: check-merge-conflict
+    -   id: check-yaml
+    -   id: debug-statements
+    -   id: detect-private-key
+    -   id: end-of-file-fixer
+    -   id: mixed-line-ending
+    -   id: pretty-format-json
+        args: ['--autofix']
+    -   id: trailing-whitespace
+-   repo: https://gitlab.com/pycqa/flake8
+    rev: 3.9.2
+    hooks:
+    - id: flake8
+-   repo: https://github.com/asottile/pyupgrade
+    rev: v2.7.2
+    hooks:
+    -   id: pyupgrade
+        args: [--py38-plus]
