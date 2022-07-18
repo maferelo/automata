@@ -1,18 +1,14 @@
 services:
-  pgadmin:
-    depends_on:
-    - "postgres"
-    environment:
-      PGADMIN_DEFAULT_EMAIL: "admin@app.com"
-      PGADMIN_DEFAULT_PASSWORD: "PgAdmin2022!"
-    image: dpage/pgadmin4
-    init: true
-    ports:
-      - "5050:5050"
-    restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
-    stop_grace_period: "3s"
-    volumes:
-      - pgadmin:/var/lib/pgadmin
+  cloudbeaver:
+      image: dbeaver/cloudbeaver:latest
+      init: true
+      container_name: "${APP_NAME}"
+      restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
+      stop_grace_period: "3s"
+      ports:
+        - '8978:8978'
+      volumes:
+        - cloudbeaver:/opt/cloudbeaver/workspace
 
 volumes:
-  pgadmin:
+  cloudbeaver: {}
