@@ -13,6 +13,22 @@ x-app:
   tty: true
 
 services:
+  pgadmin:
+    depends_on:
+    - "postgres"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@app.com"
+      PGADMIN_DEFAULT_PASSWORD: "PgAdmin2022!"
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    image: "dpage/pgadmin4"
+    init: true
+    ports:
+      - "5050:80"
+    restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
+    stop_grace_period: "3s"
+    volumes:
+      - "pgadmin:/var/lib/pgadmin"
+
   postgres:
     deploy:
       resources:
@@ -55,4 +71,5 @@ services:
     - "${DOCKER_WEB_VOLUME:-./public:/app/public}"
 
 volumes:
+  pgadmin: {}
   postgres: {}
