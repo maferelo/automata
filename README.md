@@ -163,6 +163,23 @@ heroku open
 heroku logs --tail
 ```
 
+## Database migrations
+
+Using [Alembic](https://alembic.sqlalchemy.org/en/latest/)
+
+Create migrations files
+
+```bash
+alembic init migrations
+```
+
+Modify the models and commit the changes
+
+```bash
+alembic revision --autogenerate -m "Initial"
+alembic upgrade head
+```
+
 ## Links
 
 - Project homepage: https://your.github.com/automata/
