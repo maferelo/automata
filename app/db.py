@@ -29,11 +29,3 @@ class Book(ormar.Model):
     id: int = ormar.Integer(primary_key=True)
     title: str = ormar.String(max_length=128, unique=True, nullable=False)
     author: str = ormar.String(max_length=128, unique=False, nullable=False)
-
-
-engine = sqlalchemy.create_engine(
-    settings.db_url,
-    pool_size=settings.db_engine_pool_size,
-    max_overflow=settings.db_engine_max_overflow,
-)
-metadata.create_all(engine)
