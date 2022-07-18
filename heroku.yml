@@ -9,6 +9,6 @@ build:
     web: Dockerfile
 release:
   image: web
-  command: alembic upgrade head
+  command: ["alembic", "upgrade", "head"]
 run:
   web: gunicorn app.main:app -k uvicorn.workers.UvicornWorker --worker-tmp-dir /dev/shm -b 0.0.0.0:${PORT:-5000}
