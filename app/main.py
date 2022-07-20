@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request
 
-from app.db import Book, User, database
+from app.db import Books, Readers, User, database
 
 app = FastAPI(title="Automata")
 
@@ -33,4 +33,11 @@ async def get_books():
 async def create_book(request: Request):
     data = await request.json()
     book = await Book.objects.create(**data)
+    return {"id": book.id}
+
+
+@app.post("/readers")
+async def create_reader(request: Request):
+    data = await request.json()
+    book = await Readers.objects.create(**data)
     return {"id": book.id}
