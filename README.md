@@ -51,6 +51,7 @@ pre-commit run --all-files
 ## Installation using Docker Compose
 
 ```bash
+export DOCKER_CONTENT_TRUST=1
 cd automata
 docker-compose build
 ```
