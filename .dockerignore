@@ -4,4 +4,3 @@
 __pycache__/
 docker-compose.override.yml
 notes/
-secrets/

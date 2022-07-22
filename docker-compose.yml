@@ -67,14 +67,8 @@ services:
       start_period: "10s"
       test: "${DOCKER_WEB_HEALTHCHECK_TEST:-curl --fail http://localhost:8000 || exit 1}"
       timeout: "10s"
-    secrets:
-      - db_password
     volumes:
     - "${DOCKER_WEB_VOLUME:-./public:/app/public}"
-
-secrets:
-  db_password:
-    file: secrets/db_password.txt
 
 volumes:
   pgadmin: {}
