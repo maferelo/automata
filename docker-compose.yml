@@ -15,11 +15,11 @@ x-app:
 services:
   pgadmin:
     depends_on:
-    - "postgres"
+      - "postgres"
     environment:
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
       PGADMIN_DEFAULT_EMAIL: "admin@app.com"
       PGADMIN_DEFAULT_PASSWORD: "PgAdmin2022!"
-      PGADMIN_CONFIG_SERVER_MODE: 'False'
     image: "dpage/pgadmin4"
     init: true
     ports:
@@ -62,13 +62,19 @@ services:
     ports:
       - "${DOCKER_WEB_PORT_FORWARD:-127.0.0.1:8000}:8000"
     healthcheck:
-      test: "${DOCKER_WEB_HEALTHCHECK_TEST:-curl --fail http://localhost:8000 || exit 1}"
       interval: "10s"
-      timeout: "10s"
-      start_period: "10s"
       retries: 3
+      start_period: "10s"
+      test: "${DOCKER_WEB_HEALTHCHECK_TEST:-curl --fail http://localhost:8000 || exit 1}"
+      timeout: "10s"
+    secrets:
+      - db_password
     volumes:
     - "${DOCKER_WEB_VOLUME:-./public:/app/public}"
+
+secrets:
+  db_password:
+    file: secrets/db_password.txt
 
 volumes:
   pgadmin: {}
