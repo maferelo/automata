@@ -1,6 +1,7 @@
-__pycache__/
+**/.git
 .venv
 .vscode/
-**/.git
+__pycache__/
 docker-compose.override.yml
 notes/
+secrets/
