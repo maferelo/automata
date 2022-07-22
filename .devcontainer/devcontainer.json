@@ -33,8 +33,7 @@
     "../docker-compose.yml",
     "docker-compose.yml"
   ],
-  "name": "Existing Docker Compose (Extend)",
-  "postCreateCommand": "pre-commit install",
+  "postCreateCommand": "pre-commit install && pre-commit autoupdate",
   "remoteUser": "vscode",
   "service": "web",
   "workspaceFolder": "/app"
