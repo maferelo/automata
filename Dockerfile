@@ -9,6 +9,7 @@ WORKDIR /tmp
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+# Allow piped commands to fail at any step
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN apt-get update \
     && apt-get install --no-install-recommends -y curl \
@@ -30,10 +31,9 @@ COPY --from=stage /tmp/requirements.txt /app/requirements.txt
 
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
-ENV PYTHONDONTWRITEBYTECODE="true" \
-    PYTHONUNBUFFERED="true" \
+ENV PATH="${PATH}:/home/app/.local/bin" \
     PYTHONPATH="${PYTHONPATH}:/home/app/.local/lib/python3.8/site-packages" \
-    PATH="${PATH}:/home/app/.local/bin" \
-    USER="app"
+    PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=
 
 COPY . .

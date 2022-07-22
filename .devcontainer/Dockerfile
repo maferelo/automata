@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y curl \
 
 USER vscode
 
+# Allow piped commands to fail at any step
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python - \
     && curl https://cli-assets.heroku.com/install.sh | sh
@@ -24,5 +25,8 @@ COPY ./pyproject.toml ./poetry.lock* /app/
 
 RUN --mount=type=cache,target=~/.cache/pypoetry \
     poetry config virtualenvs.create false && poetry install
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1
 
 COPY . .
