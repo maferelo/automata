@@ -23,6 +23,9 @@ RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
 
 FROM ${IMAGE}${VARIANT}
 
+COPY scripts/prestart.sh /prestart.sh
+RUN chmod +x /prestart.sh
+
 RUN addgroup --system app && adduser --system --group app
 
 USER app
