@@ -43,4 +43,4 @@ ENV PATH="${PATH}:/home/app/.local/bin" \
 
 COPY . .
 
-ENTRYPOINT scripts/entrypoint.sh && uvicorn app.main:app --host 0.0.0.0
+ENTRYPOINT uvicorn app.main:app --host 0.0.0.0
