@@ -30,6 +30,7 @@ class Readers(ormar.Model):
 
     id: int = ormar.Integer(primary_key=True)
     name: str = ormar.String(max_length=128, unique=False, nullable=False)
+    lastname: str = ormar.String(max_length=128, unique=False, nullable=True)
     email: str = ormar.String(max_length=128, unique=True, nullable=False)
 
 

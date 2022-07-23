@@ -25,13 +25,13 @@ async def shutdown():
 
 @app.get("/books")
 async def get_books():
-    return await Book.objects.all()
+    return await Books.objects.all()
 
 
 @app.post("/books")
 async def create_book(request: Request):
     data = await request.json()
-    book = await Book.objects.create(**data)
+    book = await Books.objects.create(**data)
     return {"id": book.id}
 
 
