@@ -37,3 +37,5 @@ ENV PATH="${PATH}:/home/app/.local/bin" \
     PYTHONDONTWRITEBYTECODE=
 
 COPY . .
+
+ENTRYPOINT scripts/entrypoint.sh && uvicorn app.main:app --host 0.0.0.0
