@@ -48,6 +48,8 @@ def run_migrations_offline() -> None:
         target_metadata=target_metadata,
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
+        pool_size=settings.db_engine_pool_size,
+        pool_max_overflow=settings.db_engine_max_overflow
     )
 
     with context.begin_transaction():
