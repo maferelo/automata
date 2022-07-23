@@ -34,7 +34,29 @@
         "redhat.vscode-yaml",
         "richie5um2.vscode-sort-json",
         "sourcery.sourcery"
-      ]
+      ],
+      "settings": {
+        "editor.codeActionsOnSave": {
+          "source.organizeImports": true
+        },
+        "editor.formatOnSave": true,
+        "editor.formatOnSaveMode": "file",
+        "editor.rulers": [
+          88
+        ],
+        "makefile.extensionOutputFolder": "./.vscode",
+        "python.analysis.diagnosticSeverityOverrides": {
+          "reportGeneralTypeIssues": "none"
+        },
+        "python.analysis.typeCheckingMode": "basic",
+        "python.formatting.provider": "black",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
+        "workbench.colorCustomizations": {
+          "titleBar.activeBackground": "#FFFDD0",
+          "titleBar.activeForeground": "#000000"
+        }
+      }
     }
   },
   "dockerComposeFile": [
