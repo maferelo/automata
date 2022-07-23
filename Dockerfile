@@ -30,9 +30,11 @@ RUN addgroup --system app && adduser --system --group app
 
 USER app
 
-COPY --from=stage /tmp/requirements.txt /app/requirements.txt
+WORKDIR /app
 
-RUN pip install --no-cache-dir -r /app/requirements.txt
+COPY --from=stage /tmp/requirements.txt ./requirements.txt
+
+RUN pip install --no-cache-dir -r ./requirements.txt
 
 ENV PATH="${PATH}:/home/app/.local/bin" \
     PYTHONPATH="${PYTHONPATH}:/home/app/.local/lib/python3.8/site-packages" \
