@@ -43,4 +43,4 @@ ENV PATH="${PATH}:/home/app/.local/bin" \
 
 COPY . .
 
-ENTRYPOINT uvicorn app.main:app --host 0.0.0.0
+ENTRYPOINT gunicorn app.main:app -k uvicorn.workers.UvicornWorker --worker-tmp-dir /dev/shm -b 0.0.0.0:${PORT:-5000}
