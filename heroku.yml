@@ -8,7 +8,7 @@ build:
   docker:
     web: Dockerfile
 release:
-  command: ["alembic upgrade head && whoami && /prestart.sh"]
+  command: ["/prestart.sh"]
   image: web
 run:
   web: gunicorn app.main:app -k uvicorn.workers.UvicornWorker --worker-tmp-dir /dev/shm -b 0.0.0.0:${PORT:-5000}
