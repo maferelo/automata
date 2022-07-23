@@ -14,7 +14,6 @@ async def read_root():
 async def startup():
     if not database.is_connected:
         await database.connect()
-    # create a dummy entry
     await User.objects.get_or_create(email="test@test.com")
 
 
