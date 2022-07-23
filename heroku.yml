@@ -10,6 +10,6 @@ build:
 release:
   image: web
   command:
-    - scripts/prestart.sh
+    - /prestart.sh
 run:
   web: gunicorn app.main:app -k uvicorn.workers.UvicornWorker --worker-tmp-dir /dev/shm -b 0.0.0.0:${PORT:-5000}
