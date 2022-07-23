@@ -4,6 +4,12 @@ ARG VARIANT=-bullseye
 
 FROM ${IMAGE}${VARIANT}
 
+COPY scripts/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+COPY scripts/prestart.sh /prestart.sh
+RUN chmod +x /prestart.sh
+
 WORKDIR /app
 
 ENV DEBIAN_FRONTEND=noninteractive

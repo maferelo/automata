@@ -1,9 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -e
 
-# Let the DB start
-sleep 10;
-# Run migrations
-alembic upgrade head
-
-# Hand off to the CMD
-exec "$@"
+# Enable Hooks
+pre-commit autoupdate
+pre-commit install
