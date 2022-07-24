@@ -6,7 +6,6 @@ authors = ["Felipe Restrepo <maferelo@users.noreply.github.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-python-dotenv = "^0.20.0"
 python-crontab = "^2.6.0"
 typer = "^0.4.1"
 python-telegram-bot = "^13.12"
@@ -16,6 +15,7 @@ ormar = "^0.11.2"
 psycopg2-binary = "^2.9.3"
 asyncpg = "^0.25.0"
 alembic = "^1.8.1"
+python-decouple = "^3.6"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

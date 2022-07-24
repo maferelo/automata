@@ -1,14 +1,11 @@
 """A module setup environment and app variables."""
-import os
 import sys
 from dataclasses import dataclass
 from pathlib import Path
 
-from dotenv import load_dotenv
+from decouple import config
 
 import automata
-
-load_dotenv()
 
 
 @dataclass(frozen=True)
@@ -26,10 +23,10 @@ class Paths:
 class TelegramConfig:
     """A dataclass to define the behaviour of the telegram bot."""
 
-    token: str = os.environ["TELEGRAM_TOKEN"]
-    chat_id: str = os.environ["TELEGRAM_CHAT_ID"]
+    token: str = config("TELEGRAM_TOKEN")
+    chat_id: str = config("TELEGRAM_CHAT_ID")
 
 
-scheluder_scripts = tuple(os.environ["SCHELUDER_SCRIPTS"].split(","))
+scheluder_scripts = tuple(config("SCHELUDER_SCRIPTS").split(","))
 paths = Paths()
 telegram_config = TelegramConfig()
