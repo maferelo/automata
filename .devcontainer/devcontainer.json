@@ -49,6 +49,7 @@
         "python.analysis.typeCheckingMode": "basic",
         "python.formatting.provider": "black",
         "python.linting.enabled": true,
+        "python.linting.pylintArgs": ["--disable=missing-docstring"],
         "python.linting.pylintEnabled": true,
         "workbench.colorCustomizations": {
           "titleBar.activeBackground": "#FFFDD0",
