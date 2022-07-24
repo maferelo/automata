@@ -83,3 +83,9 @@ repos:
           - id: write-good
             files: "\\.(rst|md|markdown|mdown|mkdn)$"
             exclude: docs/infra/gerrit.rst|docs/best-practices.rst
+    - repo: https://github.com/pre-commit/mirrors-eslint
+      rev: "" # Use the sha / tag you want to point at
+      hooks:
+          - id: eslint
+            files: \.[jt]sx?$ # *.js, *.jsx, *.ts and *.tsx
+            types: [file]
