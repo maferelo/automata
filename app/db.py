@@ -1,5 +1,3 @@
-from typing import Optional
-
 import databases
 import ormar
 import sqlalchemy
@@ -41,4 +39,13 @@ class Books(ormar.Model):
     id: int = ormar.Integer(primary_key=True)
     title: str = ormar.String(max_length=128, unique=True, nullable=False)
     author: str = ormar.String(max_length=128, unique=False, nullable=False)
-    reader: Optional[Readers] = ormar.ForeignKey(Readers, nullable=True, indexed=True)
+
+
+class BooksReaders(ormar.Model):
+    class Meta(BaseMeta):
+        tablename = "books_readers"
+        constraints = [ormar.UniqueColumns("book", "reader")]
+
+    id: int = ormar.Integer(primary_key=True)
+    book: Books = ormar.ForeignKey(Books, nullable=False, indexed=True)
+    reader: Readers = ormar.ForeignKey(Readers, nullable=False, indexed=True)
