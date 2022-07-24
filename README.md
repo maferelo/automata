@@ -1,6 +1,6 @@
 # Automata
 
-> Several personal scripts for automation of everyday of tasks
+> Personal scripts for automation of everyday of tasks
 > using best practices with reference notes.
 
 ## Prerequisites
@@ -14,13 +14,13 @@ git clone https://github.com/maferelo/automata.git
 cd automata
 ```
 
-#### For linux:
+### For linux
 
 ```bash
 sudo sh start-raspberry.sh
 ```
 
-#### For Mac
+### For Mac
 
 Install [Homebrew](https://brew.sh/).
 
@@ -42,7 +42,7 @@ Inside the container run:
 uvicorn app.main:app --host 0.0.0.0 --reload
 ```
 
-visit https://localhost:8000/
+visit [localhost:8000](https://localhost:8000/)
 
 ```bash
 pre-commit run --all-files
@@ -174,7 +174,7 @@ Create migrations files
 alembic init migrations
 ```
 
-Modify the models and commit the changes
+Change models and commit
 
 ```bash
 alembic revision --autogenerate -m "Initial"
@@ -183,13 +183,13 @@ alembic upgrade head
 
 ## Links
 
-- Project homepage: https://your.github.com/automata/
-- Repository: https://github.com/maferelo/automata/
-- Issue tracker: https://github.com/your/maferelo/issues
+- [Project homepage](https://your.github.com/automata/)
+- [Repository](https://github.com/maferelo/automata/)
+- [Issue tracker](https://github.com/your/maferelo/issues)
   - In case of sensitive bugs like security vulnerabilities, please contact
     maferelo13@gmail.com directly instead of using issue tracker. We value your effort
     to improve the security and privacy of this project!
-- Related projects:
-  - Your other project:
-  - Someone else's project:
-  - Awesome README: https://github.com/matiassingers/awesome-readme
+- Related projects
+  - Your other project
+  - Someone else's project
+  - [Awesome README](https://github.com/matiassingers/awesome-readme)
