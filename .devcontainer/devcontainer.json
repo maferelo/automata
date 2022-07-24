@@ -41,9 +41,7 @@
         },
         "editor.formatOnSave": true,
         "editor.formatOnSaveMode": "file",
-        "editor.rulers": [
-          88
-        ],
+        "editor.rulers": [88],
         "makefile.extensionOutputFolder": "./.vscode",
         "python.analysis.diagnosticSeverityOverrides": {
           "reportGeneralTypeIssues": "none"
@@ -55,14 +53,12 @@
         "workbench.colorCustomizations": {
           "titleBar.activeBackground": "#FFFDD0",
           "titleBar.activeForeground": "#000000"
-        }
+        },
+        "yaml.format.enable": false
       }
     }
   },
-  "dockerComposeFile": [
-    "../docker-compose.yml",
-    "docker-compose.yml"
-  ],
+  "dockerComposeFile": ["../docker-compose.yml", "docker-compose.yml"],
   "postCreateCommand": "/entrypoint.sh && /prestart.sh",
   "remoteUser": "vscode",
   "service": "web",
