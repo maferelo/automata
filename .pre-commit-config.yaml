@@ -45,6 +45,10 @@ repos:
       rev: v0.17.0
       hooks:
           - id: gitlint
+    - repo: https://github.com/hadolint/hadolint
+      rev: master
+      hooks:
+          - id: hadolint
     - repo: https://github.com/pycqa/pydocstyle
       rev: 6.1.1
       hooks:
