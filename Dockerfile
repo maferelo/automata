@@ -12,7 +12,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Allow piped commands to fail at any step
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN apt-get update \
-    && apt-get install --no-install-recommends -y curl \
+    && apt-get install --no-install-recommends -y curl=7.74.0 \
     && curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | POETRY_HOME=/opt/poetry python \
     && ln -s /opt/poetry/bin/poetry /usr/local/bin \
     && poetry config virtualenvs.create false
