@@ -1,38 +1,63 @@
 ARG IMAGE=mcr.microsoft.com/vscode/devcontainers/python:0-3.8
 ARG VARIANT=-bullseye
 
-
 FROM ${IMAGE}${VARIANT}
 
-COPY scripts/entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-
-COPY scripts/prestart.sh /prestart.sh
-RUN chmod +x /prestart.sh
-
-WORKDIR /app
-
-ENV DEBIAN_FRONTEND=noninteractive
-
-RUN apt-get update && apt-get install --no-install-recommends -y curl \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
-USER vscode
+ENV \
+    DEBIAN_FRONTEND=noninteractive \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
 
 # Allow piped commands to fail at any step
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python - \
+
+RUN \
+    apt-get update --allow-releaseinfo-change \
+    && apt-get install --no-install-recommends -y curl=7.74.0 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY scripts/prestart-app.sh /prestart-app.sh
+RUN chmod +x /prestart-app.sh
+
+USER vscode
+
+RUN \
+    curl https://pyenv.run | bash \
     && curl https://cli-assets.heroku.com/install.sh | sh
 
-ENV PATH "/home/vscode/.poetry/bin:$PATH"
+WORKDIR /app
 
-COPY ./pyproject.toml ./poetry.lock* /app/
+COPY pyproject.toml poetry.lock* ./
 
-RUN --mount=type=cache,target=~/.cache/pypoetry \
-    poetry config virtualenvs.create false && poetry install
+RUN \
+    --mount=type=cache,target=~/.cache/pypoetry \
+    curl -sSL https://install.python-poetry.org | python3 - \
+    && export PATH="$HOME/.local/bin:$PATH" \
+    && export PYENV_ROOT="$HOME/.pyenv" \
+    && command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH" \
+    && eval "$(pyenv init -)" \
+    && pyenv virtualenv automata \
+    && pyenv global automata \
+    && pyenv activate automata \
+    && poetry config virtualenvs.create false \
+    && poetry install
 
-ENV PYTHONUNBUFFERED=1 \
-    PYTHONDONTWRITEBYTECODE=1
+COPY .pre-commit-config.yaml .
+
+RUN \
+    export PYENV_ROOT="$HOME/.pyenv" \
+    && command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH" \
+    && eval "$(pyenv init -)" \
+    && eval "$(pyenv virtualenv-init -)" \
+    && git init . \
+    && pre-commit install-hooks \
+    && pre-commit install
+
+RUN \
+    echo "export PYENV_ROOT='$HOME/.pyenv'" >> ~/.bashrc \
+    && echo "command -v pyenv >/dev/null || export PATH='$PYENV_ROOT/bin:$PATH'" >> ~/.bashrc \
+    && echo "eval '$(pyenv init -)'" >> ~/.bashrc \
+    && echo "eval '$(pyenv virtualenv-init -)'" >> ~/.bashrc
 
 COPY . .
