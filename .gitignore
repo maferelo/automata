@@ -1,5 +1,6 @@
+__pycache__/
+.DS_Store
 .env
 .venv
 .vscode/
-__pycache__/
 docker-compose.override.yml
