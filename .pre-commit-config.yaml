@@ -1,4 +1,9 @@
 ---
+exclude: >
+  (?x)^(
+      migrations/|
+      notes/
+  )$
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
@@ -22,7 +27,6 @@ repos:
     rev: 22.8.0
     hooks:
       - id: black
-        exclude: ^(migrations/|notes/)
   - repo: https://github.com/asottile/blacken-docs
     rev: v1.12.1
     hooks:
