@@ -3,7 +3,8 @@ from pathlib import Path
 
 from crontab import CronTab
 
-from automata.config import paths, scheluder_scripts
+from automata.config import paths
+from automata.config import scheluder_scripts
 from automata.logger import logger
 from automata.utils import log_start_and_finish_decorator
 

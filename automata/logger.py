@@ -4,7 +4,8 @@ from logging.config import dictConfig
 
 import telegram
 
-from automata.config import paths, telegram_config
+from automata.config import paths
+from automata.config import telegram_config
 
 telegram_bot = telegram.Bot(token=telegram_config.token)
 
