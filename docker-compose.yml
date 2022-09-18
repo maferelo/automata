@@ -1,3 +1,4 @@
+---
 x-app:
   &default-app
   build:
@@ -64,10 +65,12 @@ services:
       interval: "10s"
       retries: 3
       start_period: "10s"
-      test: "${DOCKER_WEB_HEALTHCHECK_TEST:-curl --fail http://localhost:8000 || exit 1}"
+      test:
+        "${DOCKER_WEB_HEALTHCHECK_TEST:-curl
+        --fail http://localhost:8000 || exit 1}"
       timeout: "10s"
     volumes:
-    - "${DOCKER_WEB_VOLUME:-./public:/app/public}"
+      - "${DOCKER_WEB_VOLUME:-./public:/app/public}"
 
 volumes:
   pgadmin: {}
