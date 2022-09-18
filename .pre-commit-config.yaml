@@ -48,7 +48,7 @@ repos:
     rev: v2.10.0
     hooks:
       - id: hadolint
-        args: ["--ignore=DL3006"]
+        args: ["--ignore=DL3006", "--ignore=DL3008"]
   - repo: https://github.com/asottile/pyupgrade
     rev: v2.37.3
     hooks:

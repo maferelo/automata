@@ -3,8 +3,8 @@ services:
   web:
     build:
       args:
-        IMAGE: "${VSCODE_DEV_IMAGE:
-          -mcr.microsoft.com/vscode/devcontainers/python:0-3.8}"
+        IMAGE:
+          "${VSCODE_DEV_IMAGE:-mcr.microsoft.com/vscode/devcontainers/python:0-3.8}"
         VARIANT: "${VSCODE_DEV_IMAGE_VARIANT:--bullseye}"
       dockerfile: .devcontainer/Dockerfile
     # Overrides default command so things don't shut down.

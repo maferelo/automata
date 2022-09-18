@@ -13,7 +13,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN \
     apt-get update --allow-releaseinfo-change \
-    && apt-get install --no-install-recommends -y curl=7.74.0 \
+    && apt-get install --no-install-recommends -y curl \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -52,12 +52,10 @@ RUN \
     && eval "$(pyenv virtualenv-init -)" \
     && git init . \
     && pre-commit install-hooks \
-    && pre-commit install
-
-RUN \
-    echo "export PYENV_ROOT='$HOME/.pyenv'" >> ~/.bashrc \
-    && echo "command -v pyenv >/dev/null || export PATH='$PYENV_ROOT/bin:$PATH'" >> ~/.bashrc \
-    && echo "eval '$(pyenv init -)'" >> ~/.bashrc \
-    && echo "eval '$(pyenv virtualenv-init -)'" >> ~/.bashrc
+    && pre-commit install \
+    && echo "export PYENV_ROOT=$HOME/.pyenv" >> ~/.bashrc \
+    && echo "command -v pyenv >/dev/null || export PATH=$PYENV_ROOT/bin:$PATH" >> ~/.bashrc \
+    && echo "eval $(pyenv init -)" >> ~/.bashrc \
+    && echo "eval $(pyenv virtualenv-init -)" >> ~/.bashrc
 
 COPY . .
