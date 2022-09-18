@@ -18,7 +18,7 @@ cd automata
 * [Homebrew](https://brew.sh/)
 
 ```bash
-sh scripts/prestart-mac.sh
+bash scripts/prestart-mac.sh
 ```
 
 ### For RaspberryPi
@@ -29,7 +29,8 @@ sh scripts/prestart-mac.sh
 * [Python3.8.13](https://www.python.org/)
 
 ```bash
-sudo sh scripts/prestart-rpi.sh
+ssh pi@192.168.1.3
+sudo bash scripts/prestart-rpi.sh
 ```
 
 ## Development
@@ -46,7 +47,13 @@ Inside the container run:
 uvicorn app.main:app --host 0.0.0.0 --reload
 ```
 
-visit [localhost:8000](https://localhost:8000/)
+Check the endpoint
+
+```bash
+curl --location --request GET 'http://localhost:8000/'
+```
+
+### Linting
 
 ```bash
 pre-commit run --all-files
@@ -84,27 +91,6 @@ heroku logs --tail
 
 ## Usage RaspberryPi app
 
-### Initial Configuration
-
-Set .env variables
-
-SCHELUDER_SCRIPTS
-
-Name of files to run in the scripts directory e.g. "update,cleanup,backup"
-
-TELEGRAM_TOKEN
-
-TELEGRAM_CHAT_ID
-
-TZ
-
-Timezone for the project (optional) e.g. "America/Bogota"
-
-```bash
-poetry shell
-python automata/main.py --help
-```
-
 ### Features
 
 * reset_jobs: Set the scripts to run consecutive by day of month.
@@ -118,7 +104,7 @@ python automata/main.py --help
 ### Runnning the app
 
 ```bash
-sudo sh scripts/start-rpi.sh
+sudo bash scripts/start-rpi.sh
 ```
 
 ## References
