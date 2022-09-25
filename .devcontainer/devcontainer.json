@@ -3,6 +3,7 @@
     "vscode": {
       "extensions": [
         "2gua.rainbow-brackets",
+        "byCedric.vscode-expo",
         "DavidAnson.vscode-markdownlint",
         "GitHub.copilot",
         "Tyriar.sort-lines",
@@ -12,12 +13,13 @@
         "christian-kohler.path-intellisense",
         "dbaeumer.vscode-eslint",
         "dsznajder.es7-react-js-snippets",
+        "eamodio.gitlens",
         "esbenp.prettier-vscode",
         "hogashi.crontab-syntax-highlight",
         "ivangabriele.vscode-heroku",
         "mgmcdermott.vscode-language-babel",
         "mikestead.dotenv",
-        "ms-azuretools.vscode-docker",
+        "ms-python.pylint",
         "ms-python.python",
         "ms-python.vscode-pylance",
         "ms-toolsai.jupyter",
@@ -60,7 +62,7 @@
     }
   },
   "dockerComposeFile": ["../docker-compose.yml", "docker-compose.yml"],
-  "postCreateCommand": "/prestart-app.sh",
+  "postCreateCommand": "/postcreate.sh",
   "remoteUser": "vscode",
   "service": "web",
   "workspaceFolder": "/app"
