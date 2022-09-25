@@ -1,5 +1,5 @@
 ---
-exclude: ^(migrations/|notes/|stock-market-forecasting-v2/)
+exclude: ^(migrations/|notes/)
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
