@@ -69,12 +69,6 @@ repos:
     rev: v3.8.2
     hooks:
       - id: reorder-python-imports
-  - repo: https://github.com/btford/write-good
-    rev: v1.0.8
-    hooks:
-      - id: write-good
-        files: \.(rst|md|markdown|mdown|mkdn)$
-        exclude: docs/infra/gerrit.rst|docs/best-practices.rst
   - repo: https://github.com/pre-commit/mirrors-eslint
     rev: "v8.23.0"
     hooks:
