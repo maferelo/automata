@@ -5,7 +5,8 @@ x-app:
     context: "."
     target: "app"
   depends_on:
-    - "postgres"
+    postgres:
+      condition: service_healthy
   env_file:
     - ".env"
   init: true
@@ -38,6 +39,11 @@ services:
           memory: "${DOCKER_POSTGRES_MEMORY:-0}"
     env_file:
       - ".env"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     image: "${DB_IMAGE:-postgres:14.4-bullseye}"
     init: true
     ports:
@@ -70,7 +76,7 @@ services:
         --fail http://localhost:8000 || exit 1}"
       timeout: "10s"
     volumes:
-      - "${DOCKER_WEB_VOLUME:-./public:/app/public}"
+      - "${DOCKER_WEB_VOLUME:-.:/app}"
 
 volumes:
   pgadmin: {}
