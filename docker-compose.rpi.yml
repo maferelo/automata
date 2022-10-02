@@ -13,6 +13,3 @@ services:
     extends:
       file: docker-compose.yml
       service: web
-
-volumes:
-  postgres_data:

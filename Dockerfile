@@ -12,19 +12,19 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Allow piped commands to fail at any step
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN apt-get update \
-    && apt-get install --no-install-recommends -y curl=7.74.0 \
-    && curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | POETRY_HOME=/opt/poetry python \
+    && apt-get install --no-install-recommends -y curl \
+    && curl -sSL https://install.python-poetry.org | python3 - \
     && ln -s /opt/poetry/bin/poetry /usr/local/bin \
     && poetry config virtualenvs.create false
 
-COPY ./pyproject.toml ./poetry.lock* /tmp/
+COPY ./pyproject.toml ./poetry.lock* ./
 
-RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
+RUN poetry install --no-dev
 
 FROM ${IMAGE}${VARIANT}
 
-COPY scripts/prestart.sh /prestart.sh
-RUN chmod +x /prestart.sh
+COPY scripts/postcreate.sh /postcreate.sh
+RUN chmod +x /postcreate.sh
 
 RUN addgroup --system app && adduser --system --group app
 

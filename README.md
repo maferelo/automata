@@ -78,6 +78,12 @@ alembic revision --autogenerate -m "<message>"
 alembic upgrade head
 ```
 
+### Rpi
+
+```bash
+docker compose -f docker-compose.rpi.yml up
+```
+
 ## Deployments
 
 Using [Heroku](https://python-poetry.org/)
@@ -104,7 +110,7 @@ heroku logs --tail
 ### Runnning the app
 
 ```bash
-sudo bash scripts/start-rpi.sh
+sudo bash scripts/prestart-rpi.sh
 ```
 
 ## References
